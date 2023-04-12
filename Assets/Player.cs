@@ -16,16 +16,31 @@ namespace Game
         void Update()
         {
             Vector2 currentPosition = transform.position;
-            PreviousPosition = currentPosition;
             Vector2 newPosition = currentPosition;
             if (Input.GetKeyDown(KeyCode.D))
+            {
+                PreviousPosition = currentPosition;
                 newPosition = new(currentPosition.x + 1f, currentPosition.y);
-            if (Input.GetKeyDown(KeyCode.A))
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.A)) 
+            {
+                PreviousPosition = currentPosition;
                 newPosition = new(currentPosition.x - 1f, currentPosition.y);
+            }
             if (Input.GetKeyDown(KeyCode.W))
+            {
+                PreviousPosition = currentPosition;
                 newPosition = new(currentPosition.x, currentPosition.y + 1f);
+            }
+
             if (Input.GetKeyDown(KeyCode.S))
+            {
+                PreviousPosition = currentPosition;
                 newPosition = new(currentPosition.x, currentPosition.y - 1f);
+            }
+                
             transform.position = newPosition;
         }
 
