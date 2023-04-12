@@ -8,7 +8,8 @@ namespace Game
     {
         private void OnCollisionEnter2D(Collision2D collision) 
         {
-            Debug.Log("wall spot collision");
+            if(collision.gameObject.tag == "Player")
+                Debug.Log("wall spot collision");
         }
     }
 }

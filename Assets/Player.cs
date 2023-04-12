@@ -21,7 +21,6 @@ namespace Game
             {
                 PreviousPosition = currentPosition;
                 newPosition = new(currentPosition.x + 1f, currentPosition.y);
-
             }
 
             if (Input.GetKeyDown(KeyCode.A)) 
@@ -29,6 +28,7 @@ namespace Game
                 PreviousPosition = currentPosition;
                 newPosition = new(currentPosition.x - 1f, currentPosition.y);
             }
+
             if (Input.GetKeyDown(KeyCode.W))
             {
                 PreviousPosition = currentPosition;
