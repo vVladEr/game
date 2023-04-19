@@ -5,6 +5,7 @@ namespace Game
     {
         public float speed = 1.0f;
         public Vector2 PreviousPosition;
+        [SerializeField] public Shadow shadow;
         // Start is called before the first frame update
         void Start()
         {
@@ -49,7 +50,6 @@ namespace Game
             Debug.Log("collision detected");
             transform.position = PreviousPosition;
         }
-
     }
 }
 
