@@ -1,4 +1,9 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
+
 namespace Game 
 {
     public class Player : MonoBehaviour
@@ -18,31 +23,29 @@ namespace Game
         {
             Vector2 currentPosition = transform.position;
             Vector2 newPosition = currentPosition;
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.anyKeyDown)
             {
+                var directionVector = GetDirectionVector();
                 PreviousPosition = currentPosition;
-                newPosition = new(currentPosition.x + 1f, currentPosition.y);
-            }
-
-            if (Input.GetKeyDown(KeyCode.A)) 
-            {
-                PreviousPosition = currentPosition;
-                newPosition = new(currentPosition.x - 1f, currentPosition.y);
-            }
-
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                PreviousPosition = currentPosition;
-                newPosition = new(currentPosition.x, currentPosition.y + 1f);
-            }
-
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                PreviousPosition = currentPosition;
-                newPosition = new(currentPosition.x, currentPosition.y - 1f);
+                newPosition = currentPosition + directionVector;
             }
                 
             transform.position = newPosition;
+        }
+
+        Vector2 GetDirectionVector()
+        {
+            var vector = new Vector2(0, 0);
+            if (Input.GetKeyDown(KeyCode.D))
+                vector = new Vector2(1, 0);
+            if (Input.GetKeyDown(KeyCode.A))
+                vector = new Vector2(-1, 0);
+            if (Input.GetKeyDown(KeyCode.W))
+                vector = new Vector2(0, 1);
+            if (Input.GetKeyDown(KeyCode.S))
+                vector = new Vector2(0, -1);
+
+            return vector;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
