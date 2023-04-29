@@ -308,7 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   PreviousPosition: {x: 0, y: 0}
-  shadow: {fileID: 0}
+  RightShadow: {fileID: 1255623792}
 --- !u!61 &1005116264
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -368,6 +368,7 @@ GameObject:
   - component: {fileID: 1255623790}
   - component: {fileID: 1255623789}
   - component: {fileID: 1255623788}
+  - component: {fileID: 1255623792}
   m_Layer: 0
   m_Name: ShadowRight
   m_TagString: Untagged
@@ -406,7 +407,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -489,6 +490,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1255623792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255623787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b9376558bbf00046baa5f0187ad16e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1884360999
 GameObject:
   m_ObjectHideFlags: 0

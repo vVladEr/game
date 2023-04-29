@@ -10,7 +10,8 @@ namespace Game
     {
         public float speed = 1.0f;
         public Vector2 PreviousPosition;
-        [SerializeField] public Shadow shadow;
+        [SerializeField] public Shadow RightShadow;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -26,11 +27,31 @@ namespace Game
             if (Input.anyKeyDown)
             {
                 var directionVector = GetDirectionVector();
-                PreviousPosition = currentPosition;
-                newPosition = currentPosition + directionVector;
+                if (CanMove(directionVector))
+                {
+                    PreviousPosition = currentPosition;
+                    newPosition = currentPosition + directionVector;
+                    UpdateShadowsPositions(directionVector);
+                }
             }
                 
             transform.position = newPosition;
+        }
+
+        void UpdateShadowsPositions(Vector2 directionVector)
+        {
+            RightShadow.UpdatePosition(directionVector);
+        }
+
+        bool CanMove(Vector2 directionVector)
+        {
+            switch (directionVector)
+            {
+
+
+                default: return true;
+            }
+            return !RightShadow.IsTriggered;
         }
 
         Vector2 GetDirectionVector()
