@@ -11,10 +11,12 @@ namespace Game
         public IReadOnlyDictionary<Vector2, Shadow> shadowsDictionary;
         public Vector2 InitialPosition = new Vector2(0.5f, 0.5f);
         public Vector2 PreviousPosition;
-        private float deltaTime = 1f;
         private float lastTime = 0f;
         private bool isAllowedToMove = true;
-        private float eps = 0.1f;
+        public Vector2 Position => transform.position;
+
+        public const float DeltaTime = 1f;
+        public const float Eps = 0.1f;
 
         void Start()
         {
@@ -30,7 +32,7 @@ namespace Game
                 PlayerUpdate();
         }
 
-        Vector2 GetDirectionVector()
+        private Vector2 GetDirectionVector()
         {
             if (Input.GetKeyDown(KeyCode.D))
                 return new Vector2(1, 0);
@@ -65,7 +67,7 @@ namespace Game
         private void IsAllowedToMove() 
         {
             var curTime = Time.time;
-            if (curTime - lastTime > eps && (curTime-lastTime+eps)%deltaTime < 2*eps) 
+            if (curTime - lastTime > Eps && (curTime-lastTime+Eps)%DeltaTime < 2*Eps) 
             {
                 Debug.Log(curTime - lastTime);
                 isAllowedToMove = true;
