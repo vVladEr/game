@@ -14,6 +14,7 @@ namespace Game
         private float deltaTime = 1f;
         private float lastTime = 0f;
         private bool isAllowedToMove = true;
+        private float eps = 0.1f;
 
         void Start()
         {
@@ -64,7 +65,7 @@ namespace Game
         private void IsAllowedToMove() 
         {
             var curTime = Time.time;
-            if (!isAllowedToMove && curTime - lastTime > deltaTime) 
+            if (curTime - lastTime > eps && (curTime-lastTime+eps)%deltaTime < 2*eps) 
             {
                 Debug.Log(curTime - lastTime);
                 isAllowedToMove = true;
