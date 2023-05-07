@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Game 
@@ -53,6 +54,10 @@ namespace Game
             if (Input.anyKeyDown)
             {
                 var directionVector = GetDirectionVector();
+                if (Math.Abs(directionVector.x - 1) < Eps)
+                    GetComponent<SpriteRenderer>().flipX = false;
+                else if (Math.Abs(directionVector.x + 1) < Eps)
+                    GetComponent<SpriteRenderer>().flipX = true;
                 if (directionVector != new Vector2(0, 0) && shadowsDictionary[directionVector].NotCollided)
                 {
                     PreviousPosition = currentPosition;

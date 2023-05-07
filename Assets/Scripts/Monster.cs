@@ -25,6 +25,10 @@ public class Monster : MonoBehaviour
     {
         var difference = player.Position - (Vector2)transform.position;
         var directionVector = GetDirectionByDifference(difference);
+        if (directionVector.x == 1)
+            GetComponent<SpriteRenderer>().flipX = false;
+        else if (directionVector.x == -1)
+            GetComponent<SpriteRenderer>().flipX = true;
         transform.position = directionVector + (Vector2)transform.position;
         isAllowedToUpdate = false;
     }
