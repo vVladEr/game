@@ -6,19 +6,19 @@ using UnityEngine;
 public class Shadow : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] public Player player;
+    [SerializeField] public Shadows mainShadow;
     public bool NotCollided = true;
     public float dx;
     public float dy;
     void Start()
     {
-        transform.position = new Vector2(player.InitialPosition.x +dx,player.InitialPosition.y + dy);
+        transform.position = new Vector2(mainShadow.transform.position.x +dx, mainShadow.transform.position.y + dy);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector2(player.transform.position.x + dx, player.transform.position.y + dy);
+        transform.position = new Vector2(mainShadow.transform.position.x + dx, mainShadow.transform.position.y + dy);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

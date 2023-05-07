@@ -1,18 +1,28 @@
 using Game;
+using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
     [SerializeField] public Player player;
+    [SerializeField] public Shadows mainShadow;
     private bool isAllowedToUpdate = true;
     private float lastTime = 0f;
     private float activationDistance = 4f; // Можно вынести в константу
     private float pauseCoefficient = 1.5f; // Возможность игроку убежать от монстра
+    public IReadOnlyDictionary<Vector2, Func<bool>> shadowsDictionary;
 
     void Start()
     {
-        
+        shadowsDictionary = new Dictionary<Vector2, Func<bool>>(){
+                {new Vector2(1, 0), () => mainShadow.IsRightNotCollided()},
+                {new Vector2(-1, 0),() => mainShadow.IsLeftNotCollided()},
+                {new Vector2(0, 1), () => mainShadow.IsTopNotCollided()},
+                {new Vector2(0, -1),() => mainShadow.IsBottomNotCollided()}
+            };
+
     }
 
     void Update()
@@ -29,7 +39,10 @@ public class Monster : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = false;
         else if (directionVector.x == -1)
             GetComponent<SpriteRenderer>().flipX = true;
-        transform.position = directionVector + (Vector2)transform.position;
+        if (shadowsDictionary[directionVector]()) 
+        {
+            transform.position = directionVector + (Vector2)transform.position;
+        }
         isAllowedToUpdate = false;
     }
 

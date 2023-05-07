@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shadows<T> : MonoBehaviour
-    where T : MonoBehaviour
+public class Shadows : MonoBehaviour
 {
-    [SerializeField] T entity;
+    [SerializeField] MonoBehaviour entity;
     [SerializeField] private Shadow leftShadow;
     [SerializeField] private Shadow rightShadow;
     [SerializeField] private Shadow topShadow;
