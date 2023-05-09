@@ -7,43 +7,45 @@ namespace Game
     {
         [SerializeField] public Shadows Shadows;
         public IReadOnlyDictionary<Vector2, Func<bool>> shadowsDictionary;
-        public Vector2 InitialPosition = new Vector2(0.5f, 0.5f);
+        public Vector2 InitialPosition;
         public Vector2 PreviousPosition;
         private float lastTime = 0f;
         private bool isAllowedToMove = true;
         public Vector2 Position => transform.position;
 
-        public const float DeltaTime = 1f;
+        public const float DeltaTime = 0.1f;
         public const float Eps = 0.1f;
+        public const float mathEps = 0.0001f;
 
         void Start()
         {
             transform.position = InitialPosition;
             shadowsDictionary = new Dictionary<Vector2, Func<bool>>(){
-                {new Vector2(1, 0), () => Shadows.IsRightNotCollided()},
-                {new Vector2(-1, 0),() => Shadows.IsLeftNotCollided()},
-                {new Vector2(0, 1), () => Shadows.IsTopNotCollided()},
-                {new Vector2(0, -1),() => Shadows.IsBottomNotCollided()}
+                {new Vector2(0.16f, 0), () => Shadows.IsRightNotCollided()},
+                {new Vector2(-0.16f, 0),() => Shadows.IsLeftNotCollided()},
+                {new Vector2(0, 0.16f), () => Shadows.IsTopNotCollided()},
+                {new Vector2(0, -0.16f),() => Shadows.IsBottomNotCollided()}
             };
         }
 
         void Update()
         {
-            IsAllowedToMove();
-            if (isAllowedToMove)
-                PlayerUpdate();
+            PlayerUpdate();
+            //IsAllowedToMove();
+            //if (isAllowedToMove)
+            //    PlayerUpdate();
         }
 
         private Vector2 GetDirectionVector()
         {
             if (Input.GetKeyDown(KeyCode.D))
-                return new Vector2(1, 0);
+                return new Vector2(0.16f, 0);
             if (Input.GetKeyDown(KeyCode.A))
-                return new Vector2(-1, 0);
+                return new Vector2(-0.16f, 0);
             if (Input.GetKeyDown(KeyCode.W))
-                return new Vector2(0, 1);
+                return new Vector2(0, 0.16f);
             if (Input.GetKeyDown(KeyCode.S))
-                return new Vector2(0, -1);
+                return new Vector2(0, -0.16f);
 
             return new Vector2(0, 0);
         }
@@ -55,9 +57,9 @@ namespace Game
             if (Input.anyKeyDown)
             {
                 var directionVector = GetDirectionVector();
-                if (Math.Abs(directionVector.x - 1) < Eps)
+                if (Math.Abs(directionVector.x - 0.16f) < mathEps)
                     GetComponent<SpriteRenderer>().flipX = false;
-                else if (Math.Abs(directionVector.x + 1) < Eps)
+                else if (Math.Abs(directionVector.x + 0.16f) < mathEps)
                     GetComponent<SpriteRenderer>().flipX = true;
                 if (directionVector != new Vector2(0, 0) && shadowsDictionary[directionVector]())
                 {

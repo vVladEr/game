@@ -25,6 +25,7 @@ public class Shadow : MonoBehaviour
     {
         if (collision.gameObject.tag == "Wall")
         {
+            Debug.Log("Shadow Collided");
             NotCollided = false;
         }
     }
