@@ -8,19 +8,20 @@ public class Monster : MonoBehaviour
 {
     [SerializeField] public Player player;
     [SerializeField] public Shadows mainShadow;
+    private float stepLength = 0.16f;
     private bool isAllowedToUpdate = true;
     private float lastTime = 0f;
-    private float activationDistance = 4f; // Можно вынести в константу
+    private float activationDistance = 0.64f; // Можно вынести в константу
     private float pauseCoefficient = 1.5f; // Возможность игроку убежать от монстра
     public IReadOnlyDictionary<Vector2, Func<bool>> shadowsDictionary;
 
     void Start()
     {
         shadowsDictionary = new Dictionary<Vector2, Func<bool>>(){
-                {new Vector2(1, 0), () => mainShadow.IsRightNotCollided()},
-                {new Vector2(-1, 0),() => mainShadow.IsLeftNotCollided()},
-                {new Vector2(0, 1), () => mainShadow.IsTopNotCollided()},
-                {new Vector2(0, -1),() => mainShadow.IsBottomNotCollided()}
+                {new Vector2(stepLength, 0), () => mainShadow.IsRightNotCollided()},
+                {new Vector2(-stepLength, 0),() => mainShadow.IsLeftNotCollided()},
+                {new Vector2(0, stepLength), () => mainShadow.IsTopNotCollided()},
+                {new Vector2(0, -stepLength),() => mainShadow.IsBottomNotCollided()}
             };
 
     }
@@ -35,9 +36,9 @@ public class Monster : MonoBehaviour
     {
         var difference = player.Position - (Vector2)transform.position;
         var directionVector = GetDirectionByDifference(difference);
-        if (directionVector.x == 1)
+        if (directionVector.x == stepLength)
             GetComponent<SpriteRenderer>().flipX = false;
-        else if (directionVector.x == -1)
+        else if (directionVector.x == -stepLength)
             GetComponent<SpriteRenderer>().flipX = true;
         if (shadowsDictionary[directionVector]()) 
         {
@@ -50,10 +51,10 @@ public class Monster : MonoBehaviour
     {
         var activationDifference = 0f; // Он может шагнуть на Playe => обработать коллизию или сравнивать с 1.1
                                           // Затем вынести в констнату
-        if (difference.x > activationDifference) return new Vector2(1, 0);
-        if (difference.x < activationDifference) return new Vector2(-1, 0);
-        if (difference.y > activationDifference) return new Vector2(0, 1);
-        if (difference.y < activationDifference) return new Vector2(0, -1);
+        if (difference.x > activationDifference) return new Vector2(stepLength, 0);
+        if (difference.x < activationDifference) return new Vector2(-stepLength, 0);
+        if (difference.y > activationDifference) return new Vector2(0, stepLength);
+        if (difference.y < activationDifference) return new Vector2(0, -stepLength);
         return new Vector2(0, 0);
     }
 

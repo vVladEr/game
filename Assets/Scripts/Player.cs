@@ -13,7 +13,7 @@ namespace Game
         private bool isAllowedToMove = true;
         public Vector2 Position => transform.position;
 
-        public const float DeltaTime = 0.1f;
+        public const float DeltaTime = 1f;
         public const float Eps = 0.1f;
         public const float mathEps = 0.0001f;
 
@@ -30,10 +30,9 @@ namespace Game
 
         void Update()
         {
-            PlayerUpdate();
-            //IsAllowedToMove();
-            //if (isAllowedToMove)
-            //    PlayerUpdate();
+            IsAllowedToMove();
+            if (isAllowedToMove)
+                PlayerUpdate();
         }
 
         private Vector2 GetDirectionVector()
