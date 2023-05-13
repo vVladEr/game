@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Game 
 {
-    public class Player : MonoBehaviour
+    public class Player : Character
     {
-        [SerializeField] public Shadows Shadows;
-        [SerializeField] private LayerMask walls;
-        public IReadOnlyDictionary<Vector2, Func<bool>> shadowsDictionary;
         public Vector2 InitialPosition;
         public Vector2 PreviousPosition;
         private float lastTime = 0f;
@@ -17,18 +14,12 @@ namespace Game
         public const float DeltaTime = 1f;
         public const float Eps = 0.1f;
         public const float mathEps = 0.0001f;
-        private Collider2D coll;
 
         void Start()
         {
-            coll = gameObject.GetComponent<Collider2D>();
+            //coll = gameObject.GetComponent<Collider2D>();
+            InitialiseCharacter();
             transform.position = InitialPosition;
-            shadowsDictionary = new Dictionary<Vector2, Func<bool>>(){
-                {new Vector2(0.16f, 0), () => IsRightFree()},
-                {new Vector2(-0.16f, 0),() => IsLeftFree()},
-                {new Vector2(0, 0.16f), () => IsTopFree()},
-                {new Vector2(0, -0.16f),() => IsBottomFree()}
-            };
         }
 
         void Update()
@@ -41,13 +32,13 @@ namespace Game
         private Vector2 GetDirectionVector()
         {
             if (Input.GetKeyDown(KeyCode.D))
-                return new Vector2(0.16f, 0);
+                return new Vector2(stepLength, 0);
             if (Input.GetKeyDown(KeyCode.A))
-                return new Vector2(-0.16f, 0);
+                return new Vector2(-stepLength, 0);
             if (Input.GetKeyDown(KeyCode.W))
-                return new Vector2(0, 0.16f);
+                return new Vector2(0, stepLength);
             if (Input.GetKeyDown(KeyCode.S))
-                return new Vector2(0, -0.16f);
+                return new Vector2(0, -stepLength);
 
             return new Vector2(0, 0);
         }
@@ -59,11 +50,11 @@ namespace Game
             if (Input.anyKeyDown)
             {
                 var directionVector = GetDirectionVector();
-                if (Math.Abs(directionVector.x - 0.16f) < mathEps)
+                if (Math.Abs(directionVector.x - stepLength) < mathEps)
                     GetComponent<SpriteRenderer>().flipX = false;
-                else if (Math.Abs(directionVector.x + 0.16f) < mathEps)
+                else if (Math.Abs(directionVector.x + stepLength) < mathEps)
                     GetComponent<SpriteRenderer>().flipX = true;
-                if (directionVector != new Vector2(0, 0) && shadowsDictionary[directionVector]())
+                if (directionVector != new Vector2(0, 0) && movementDictionary[directionVector]())
                 {
                     PreviousPosition = currentPosition;
                     newPosition = currentPosition + directionVector;
@@ -85,28 +76,6 @@ namespace Game
             }
         }
 
-        private bool IsRightFree() 
-        {
-            return !Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f,
-                Vector2.right, 0.16f, walls);
-        }
 
-        private bool IsLeftFree()
-        {
-            return !Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f,
-                Vector2.left, 0.16f, walls);
-        }
-
-        private bool IsTopFree()
-        {
-            return !Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f,
-                Vector2.up, 0.16f, walls);
-        }
-
-        private bool IsBottomFree()
-        {
-            return !Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f,
-                Vector2.down, 0.16f, walls);
-        }
     }
 }
