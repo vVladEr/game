@@ -9,17 +9,6 @@ public class Character : MonoBehaviour
     public Collider2D coll;
     public float stepLength = 0.16f;
     public IReadOnlyDictionary<Vector2, Func<bool>> movementDictionary;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void InitialiseCharacter() 
     {
