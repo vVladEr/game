@@ -14,10 +14,10 @@ namespace Game
         public const float DeltaTime = 1f;
         public const float Eps = 0.1f;
         public const float mathEps = 0.0001f;
-
+        private int damage = 1;
+        private bool didActionOnThisTurn = false;
         void Start()
         {
-            //coll = gameObject.GetComponent<Collider2D>();
             InitialiseCharacter();
             transform.position = InitialPosition;
         }
@@ -45,24 +45,13 @@ namespace Game
 
         private void PlayerUpdate() 
         {
-            Vector2 currentPosition = transform.position;
-            Vector2 newPosition = currentPosition;
             if (Input.anyKeyDown)
             {
-                var directionVector = GetDirectionVector();
-                if (Math.Abs(directionVector.x - stepLength) < mathEps)
-                    GetComponent<SpriteRenderer>().flipX = false;
-                else if (Math.Abs(directionVector.x + stepLength) < mathEps)
-                    GetComponent<SpriteRenderer>().flipX = true;
-                if (directionVector != new Vector2(0, 0) && movementDictionary[directionVector]())
-                {
-                    PreviousPosition = currentPosition;
-                    newPosition = currentPosition + directionVector;
-                }
-                isAllowedToMove = false;
-                transform.position = newPosition;
+                PlayerAttack();
+                if(!didActionOnThisTurn)
+                    PlayerMove();
             }
-
+            didActionOnThisTurn = false;
         }
 
         private void IsAllowedToMove() 
@@ -76,6 +65,44 @@ namespace Game
             }
         }
 
+        private void Hit(Collider2D hit) 
+        {
+            if (hit.GetComponent<EnemyHp>()) 
+            {
+                hit.GetComponent<EnemyHp>().Hp -= damage;
+            }
+        }
+        private void PlayerMove()
+        {
+            Vector2 currentPosition = transform.position;
+            Vector2 newPosition = currentPosition;
+            var directionVector = GetDirectionVector();
+            if (Math.Abs(directionVector.x - stepLength) < mathEps)
+                GetComponent<SpriteRenderer>().flipX = false;
+            else if (Math.Abs(directionVector.x + stepLength) < mathEps)
+                GetComponent<SpriteRenderer>().flipX = true;
+            if (directionVector != new Vector2(0, 0) && movementDictionary[directionVector]())
+            {
+                PreviousPosition = currentPosition;
+                newPosition = currentPosition + directionVector;
+            }
+            isAllowedToMove = false;
+            transform.position = newPosition;
+        }
 
+        private void PlayerAttack()
+        {
+            var directionVector = GetDirectionVector();
+            if (Math.Abs(directionVector.x - stepLength) < mathEps)
+                GetComponent<SpriteRenderer>().flipX = false;
+            else if (Math.Abs(directionVector.x + stepLength) < mathEps)
+                GetComponent<SpriteRenderer>().flipX = true;
+            var enemy = attackDictionary[directionVector]();
+            if (directionVector != new Vector2(0, 0) && enemy != null)
+            {
+                Hit(enemy);
+                didActionOnThisTurn = true;
+            }
+        }
     }
 }
