@@ -12,6 +12,8 @@ public class Monster : Character
     private float activationDistance = 0.64f; // Можно вынести в константу
     private float pauseCoefficient = 1.5f; // Возможность игроку убежать от монстра
     private float mathEps = 0.0001f;
+    public const int TurnsDelay = 1;
+    private int turnsTimer = TurnsDelay;
 
     void Start()
     {
@@ -26,17 +28,29 @@ public class Monster : Character
 
     private void MonsterUpdate()
     {
-        var difference = player.Position - (Vector2)transform.position;
-        var directionVector = GetDirectionByDifference(difference);
-        if (directionVector.x == stepLength)
-            GetComponent<SpriteRenderer>().flipX = false;
-        else if (directionVector.x == -stepLength)
-            GetComponent<SpriteRenderer>().flipX = true;
-        if (movementDictionary[directionVector]()) 
+        if (turnsTimer == 0)
         {
-            transform.position = directionVector + (Vector2)transform.position;
+            turnsTimer = TurnsDelay;
+            var difference = player.Position - (Vector2)transform.position;
+            var directionVector = GetDirectionByDifference(difference);
+            if (directionVector.x == stepLength)
+                GetComponent<SpriteRenderer>().flipX = false;
+            else if (directionVector.x == -stepLength)
+                GetComponent<SpriteRenderer>().flipX = true;
+
+            if (attackDictionary[directionVector]())
+            {
+                Hit(attackDictionary[directionVector]());
+            }
+            else if (movementDictionary[directionVector]())
+            {
+                transform.position = directionVector + (Vector2)transform.position;
+            }
+            isAllowedToUpdate = false;
         }
-        isAllowedToUpdate = false;
+        else 
+            turnsTimer--;
+
     }
 
     private Vector2 GetDirectionByDifference(Vector2 difference)
@@ -68,4 +82,5 @@ public class Monster : Character
     private float GetDistanceToPlayer()
         => Mathf.Sqrt((player.Position.x - transform.position.x) * (player.Position.x - transform.position.x) +
             (player.Position.y - transform.position.y) * (player.Position.y - transform.position.y));
+
 }

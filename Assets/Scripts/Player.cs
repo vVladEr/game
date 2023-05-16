@@ -6,7 +6,6 @@ namespace Game
     public class Player : Character
     {
         public Vector2 InitialPosition;
-        public Vector2 PreviousPosition;
         private float lastTime = 0f;
         private bool isAllowedToMove = true;
         public Vector2 Position => transform.position;
@@ -14,7 +13,6 @@ namespace Game
         public const float DeltaTime = 1f;
         public const float Eps = 0.1f;
         public const float mathEps = 0.0001f;
-        private int damage = 1;
         private bool didActionOnThisTurn = false;
         void Start()
         {
@@ -65,13 +63,7 @@ namespace Game
             }
         }
 
-        private void Hit(Collider2D hit) 
-        {
-            if (hit.GetComponent<EnemyHp>()) 
-            {
-                hit.GetComponent<EnemyHp>().TakeHit(damage);
-            }
-        }
+
         private void PlayerMove()
         {
             Vector2 currentPosition = transform.position;
@@ -83,7 +75,6 @@ namespace Game
                 GetComponent<SpriteRenderer>().flipX = true;
             if (directionVector != new Vector2(0, 0) && movementDictionary[directionVector]())
             {
-                PreviousPosition = currentPosition;
                 newPosition = currentPosition + directionVector;
             }
             isAllowedToMove = false;

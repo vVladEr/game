@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
     public float stepLength = 0.16f;
     public IReadOnlyDictionary<Vector2, Func<bool>> movementDictionary;
     public IReadOnlyDictionary<Vector2, Func<Collider2D>> attackDictionary;
+    public int damage;
 
     public void InitialiseCharacter() 
     {
@@ -76,5 +77,15 @@ public class Character : MonoBehaviour
     {
         return Physics2D.BoxCast(coll.bounds.center + stepLength * Vector3.down, coll.bounds.size, 0f,
             Vector2.down, 0, Enemy).collider;
+    }
+
+    public void Hit(Collider2D hit)
+    {
+        if (hit.GetComponent<EnemyHp>())
+        {
+            hit.GetComponent<EnemyHp>().TakeHit(damage);
+        }
+        if (hit.GetComponent<PlayerHp>())
+            hit.GetComponent<PlayerHp>().TakeHit(damage);
     }
 }

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class EnemyHp : MonoBehaviour
+public class PlayerHp : MonoBehaviour
 {
     public int Hp = 2;
     public GameObject Hitmarker;
@@ -12,6 +13,11 @@ public class EnemyHp : MonoBehaviour
     {
         Hp -= damage;
         if (Hp <= 0)
-            Destroy(gameObject);
+            RestartLevel();
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
