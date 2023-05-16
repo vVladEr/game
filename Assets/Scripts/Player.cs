@@ -69,7 +69,7 @@ namespace Game
         {
             if (hit.GetComponent<EnemyHp>()) 
             {
-                hit.GetComponent<EnemyHp>().Hp -= damage;
+                hit.GetComponent<EnemyHp>().TakeHit(damage);
             }
         }
         private void PlayerMove()
@@ -97,10 +97,9 @@ namespace Game
                 GetComponent<SpriteRenderer>().flipX = false;
             else if (Math.Abs(directionVector.x + stepLength) < mathEps)
                 GetComponent<SpriteRenderer>().flipX = true;
-            var enemy = attackDictionary[directionVector]();
-            if (directionVector != new Vector2(0, 0) && enemy != null)
+            if (directionVector != new Vector2(0, 0) && attackDictionary[directionVector]())
             {
-                Hit(enemy);
+                Hit(attackDictionary[directionVector]());
                 didActionOnThisTurn = true;
             }
         }
