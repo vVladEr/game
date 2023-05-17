@@ -10,6 +10,8 @@ public class Monster : Character
     private bool isAllowedToUpdate = true;
     private float lastTime = 0f;
     private float activationDistance = 0.64f; // Можно вынести в константу
+    public const float DeltaTime = 1f;
+    private const float Eps = 0.001f;
     private float pauseCoefficient = 1.5f; // Возможность игроку убежать от монстра
     private float mathEps = 0.0001f;
     public const int TurnsDelay = 1;
@@ -22,7 +24,7 @@ public class Monster : Character
 
     void Update()
     {
-        if (CanUpdate())
+        if (CanUpdate2())
             MonsterUpdate();
     }
 
@@ -77,6 +79,17 @@ public class Monster : Character
             lastTime = curTime;
         }
         return isAllowedToUpdate;
+    }
+
+    private bool CanUpdate2() 
+    {
+        if (GetDistanceToPlayer() >= activationDistance)
+            return false;
+        var curTime = Time.time;
+        if (curTime % DeltaTime < Eps ||
+            curTime % DeltaTime > DeltaTime - Eps)
+            return true;
+        return false;
     }
 
     private float GetDistanceToPlayer()

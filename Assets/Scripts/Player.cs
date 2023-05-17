@@ -22,7 +22,7 @@ namespace Game
 
         void Update()
         {
-            IsAllowedToMove();
+            IsAllowedToMove2();
             if (isAllowedToMove)
                 PlayerUpdate();
         }
@@ -61,6 +61,14 @@ namespace Game
                 isAllowedToMove = true;
                 lastTime = curTime;
             }
+        }
+
+        private void IsAllowedToMove2() 
+        {
+            var curTime = Time.time;
+            if (curTime % DeltaTime < Eps ||
+                curTime % DeltaTime > DeltaTime - Eps)
+                isAllowedToMove = true;
         }
 
 
