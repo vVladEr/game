@@ -9,49 +9,18 @@ public class Dagger : BasicWeapon
     {
         Name = "Dagger";
         Damage = 1;
-        AttackDictionary =  new Dictionary<Vector2, Func<Collider2D>>() {
-                {Vector2.right, () => IsEnemyOnRight()},
-                { Vector2.left,() => IsEnemyOnLeft()},
-                { Vector2.up, () => IsEnemyOnTop()},
-                { Vector2.down,() => IsEnemyOnBottom()}
-        };
         coll = gameObject.GetComponent<Collider2D>();
         stepLength = gameObject.GetComponent<Character>().stepLength;
         Enemy = gameObject.GetComponent<Character>().Enemy;
     }
 
-    public override void Attack(Vector2 attackDirection)
+    public override List<Collider2D> IsEnemyInDirection(Vector3 dir) 
     {
-        AttackSucc = false;
-        var enemy = AttackDictionary[attackDirection.normalized]();
-        if (enemy) 
-        {
-            Hit(enemy);
-            AttackSucc = true;
-        }
-    }
-
-    public override Collider2D IsEnemyOnRight()
-    {
-        return Physics2D.BoxCast(coll.bounds.center + stepLength * Vector3.right, coll.bounds.size, 0f,
+        var res = new List<Collider2D>();
+        var enemy = Physics2D.BoxCast(coll.bounds.center + stepLength * dir, coll.bounds.size, 0f,
             Vector2.right, 0, Enemy).collider;
-    }
-
-    public override Collider2D IsEnemyOnLeft()
-    {
-        return Physics2D.BoxCast(coll.bounds.center + stepLength * Vector3.left, coll.bounds.size, 0f,
-            Vector2.left, 0, Enemy).collider;
-    }
-
-    public override Collider2D IsEnemyOnTop()
-    {
-        return Physics2D.BoxCast(coll.bounds.center + stepLength * Vector3.up, coll.bounds.size, 0f,
-            Vector2.up, 0, Enemy).collider;
-    }
-
-    public override Collider2D IsEnemyOnBottom()
-    {
-        return Physics2D.BoxCast(coll.bounds.center + stepLength * Vector3.down, coll.bounds.size, 0f,
-            Vector2.down, 0, Enemy).collider;
+        if (enemy)
+            res.Add(enemy);
+        return res;
     }
 }

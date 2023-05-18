@@ -18,7 +18,7 @@ namespace Game
         {
             InitialiseCharacter();
             transform.position = InitialPosition;
-            Weapon = gameObject.AddComponent<Dagger>();
+            Weapon = gameObject.AddComponent<Spear>();
             Weapon.Inisialise();
         }
 
@@ -88,6 +88,12 @@ namespace Game
             else if (Math.Abs(directionVector.x + stepLength) < mathEps)
                 GetComponent<SpriteRenderer>().flipX = true;
             Weapon.Attack(directionVector.normalized);
+            if (Weapon.AttackSucc) 
+            {
+                didActionOnThisTurn = true;
+                Debug.Log("succesful attack");
+            }
+
         }
     }
 }

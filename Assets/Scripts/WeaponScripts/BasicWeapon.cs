@@ -12,16 +12,22 @@ public abstract class BasicWeapon : MonoBehaviour
     public Collider2D coll { get; set;}
     public float stepLength { get; set;}
 
-    public IReadOnlyDictionary<Vector2, Func<Collider2D>> AttackDictionary;
 
     public abstract void Inisialise();
 
-    public abstract void Attack(Vector2 attackDirection);
+    public void Attack(Vector3 attackDirection)
+    {
+        AttackSucc = false;
+        var enemies = IsEnemyInDirection(attackDirection.normalized);
+        foreach (var enemy in enemies)
+        {
+            Hit(enemy);
+            AttackSucc = true;
+        }
+    }
 
-    public abstract Collider2D IsEnemyOnRight();
-    public abstract Collider2D IsEnemyOnLeft();
-    public abstract Collider2D IsEnemyOnTop();
-    public abstract Collider2D IsEnemyOnBottom();
+
+    public abstract List<Collider2D> IsEnemyInDirection(Vector3 dir);
 
     public void Hit(Collider2D hit)
     {
