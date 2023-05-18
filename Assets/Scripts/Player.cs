@@ -18,7 +18,7 @@ namespace Game
         {
             InitialiseCharacter();
             transform.position = InitialPosition;
-            Weapon = gameObject.AddComponent<Spear>();
+            Weapon = gameObject.AddComponent<Axe>();
             Weapon.Inisialise();
         }
 
