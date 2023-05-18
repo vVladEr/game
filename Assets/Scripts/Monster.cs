@@ -7,24 +7,24 @@ using UnityEngine;
 public class Monster : Character
 {
     [SerializeField] public Player player;
-    private bool isAllowedToUpdate = true;
-    private float lastTime = 0f;
     private float activationDistance = 0.64f; // Можно вынести в константу
     public const float DeltaTime = 1f;
     private const float Eps = 0.001f;
-    private float pauseCoefficient = 1.5f; // Возможность игроку убежать от монстра
     private float mathEps = 0.0001f;
     public const int TurnsDelay = 1;
     private int turnsTimer = TurnsDelay;
+    public Dagger Weapon;
 
     void Start()
     {
         InitialiseCharacter();
+        Weapon = GetComponent<Dagger>();
+        Weapon.Inisialise();
     }
 
     void Update()
     {
-        if (CanUpdate2())
+        if (CanUpdate())
             MonsterUpdate();
     }
 
@@ -40,15 +40,11 @@ public class Monster : Character
             else if (directionVector.x == -stepLength)
                 GetComponent<SpriteRenderer>().flipX = true;
 
-            if (attackDictionary[directionVector]())
-            {
-                Hit(attackDictionary[directionVector]());
-            }
-            else if (movementDictionary[directionVector]())
+            Weapon.Attack(directionVector.normalized);
+            if (!Weapon.AttackSucc)
             {
                 transform.position = directionVector + (Vector2)transform.position;
             }
-            isAllowedToUpdate = false;
         }
         else 
             turnsTimer--;
@@ -66,22 +62,8 @@ public class Monster : Character
         return new Vector2(0, 0);
     }
 
-    private bool CanUpdate()
-    {
-        if (GetDistanceToPlayer() >= activationDistance) 
-            return false;
-        var curTime = Time.time;
-        if (curTime - lastTime > Player.Eps 
-            && (curTime - lastTime + Player.Eps) % (Player.DeltaTime * pauseCoefficient) < 2 * Player.Eps)
-        {
-            Debug.Log(curTime - lastTime);
-            isAllowedToUpdate = true; // А нужна ли? Возможно надо переименовать (и в плеере тоже)
-            lastTime = curTime;
-        }
-        return isAllowedToUpdate;
-    }
 
-    private bool CanUpdate2() 
+    private bool CanUpdate() 
     {
         if (GetDistanceToPlayer() >= activationDistance)
             return false;

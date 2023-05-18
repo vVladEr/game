@@ -6,7 +6,6 @@ namespace Game
     public class Player : Character
     {
         public Vector2 InitialPosition;
-        private float lastTime = 0f;
         private bool isAllowedToMove = true;
         public Vector2 Position => transform.position;
 
@@ -14,15 +13,18 @@ namespace Game
         public const float Eps = 0.1f;
         public const float mathEps = 0.0001f;
         private bool didActionOnThisTurn = false;
+        public BasicWeapon Weapon;
         void Start()
         {
             InitialiseCharacter();
             transform.position = InitialPosition;
+            Weapon = gameObject.AddComponent<Dagger>();
+            Weapon.Inisialise();
         }
 
         void Update()
         {
-            IsAllowedToMove2();
+            IsAllowedToMove();
             if (isAllowedToMove)
                 PlayerUpdate();
         }
@@ -55,17 +57,6 @@ namespace Game
         private void IsAllowedToMove() 
         {
             var curTime = Time.time;
-            if (curTime - lastTime > Eps && (curTime-lastTime+Eps)%DeltaTime < 2*Eps) 
-            {
-                Debug.Log(curTime - lastTime);
-                isAllowedToMove = true;
-                lastTime = curTime;
-            }
-        }
-
-        private void IsAllowedToMove2() 
-        {
-            var curTime = Time.time;
             if (curTime % DeltaTime < Eps ||
                 curTime % DeltaTime > DeltaTime - Eps)
                 isAllowedToMove = true;
@@ -96,11 +87,7 @@ namespace Game
                 GetComponent<SpriteRenderer>().flipX = false;
             else if (Math.Abs(directionVector.x + stepLength) < mathEps)
                 GetComponent<SpriteRenderer>().flipX = true;
-            if (directionVector != new Vector2(0, 0) && attackDictionary[directionVector]())
-            {
-                Hit(attackDictionary[directionVector]());
-                didActionOnThisTurn = true;
-            }
+            Weapon.Attack(directionVector.normalized);
         }
     }
 }

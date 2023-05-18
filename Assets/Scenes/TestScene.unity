@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 170031008}
   - component: {fileID: 170031010}
   - component: {fileID: 170031011}
+  - component: {fileID: 170031012}
   m_Layer: 7
   m_Name: Monster
   m_TagString: Monster
@@ -247,6 +248,7 @@ MonoBehaviour:
   stepLength: 0.16
   damage: 1
   player: {fileID: 1093690540}
+  Weapon: {fileID: 0}
 --- !u!212 &170031009
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -340,6 +342,24 @@ MonoBehaviour:
   Hp: 4
   Hitmarker: {fileID: 680787109}
   GetHit: 0
+--- !u!114 &170031012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170031006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff4181760c84e142a023a2e9e29bd86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy:
+    serializedVersion: 2
+    m_Bits: 0
+  Name: 
+  Damage: 0
+  AttackSucc: 0
 --- !u!1 &526542403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,6 +1326,7 @@ GameObject:
   - component: {fileID: 990895388}
   - component: {fileID: 990895387}
   - component: {fileID: 990895386}
+  - component: {fileID: 990895390}
   m_Layer: 7
   m_Name: Monster
   m_TagString: Monster
@@ -1391,6 +1412,7 @@ MonoBehaviour:
   stepLength: 0.16
   damage: 1
   player: {fileID: 1093690540}
+  Weapon: {fileID: 0}
 --- !u!212 &990895389
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1443,6 +1465,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &990895390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990895384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff4181760c84e142a023a2e9e29bd86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy:
+    serializedVersion: 2
+    m_Bits: 0
+  Name: 
+  Damage: 0
+  AttackSucc: 0
 --- !u!1 &1049212884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1586,6 +1626,7 @@ MonoBehaviour:
   stepLength: 0.16
   damage: 2
   InitialPosition: {x: 5.2, y: -0.4}
+  Weapon: {fileID: 0}
 --- !u!50 &1093690541
 Rigidbody2D:
   serializedVersion: 4
@@ -1697,7 +1738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62dc7ce5862c62143b2a206f133f1488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 2
+  Hp: 10
   Hitmarker: {fileID: 680787109}
   GetHit: 0
 --- !u!1 &1566838213
