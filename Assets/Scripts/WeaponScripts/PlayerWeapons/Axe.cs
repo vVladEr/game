@@ -27,7 +27,7 @@ public class Axe : BasicWeapon
                 enemy = Physics2D.BoxCast(coll.bounds.center + stepLength * (dir + i * Vector3.up), coll.bounds.size, 0f,
                     Vector2.right, 0, Enemy).collider;
             else
-                enemy = Physics2D.BoxCast(coll.bounds.center + stepLength * (dir + i * Vector3.up), coll.bounds.size, 0f,
+                enemy = Physics2D.BoxCast(coll.bounds.center + stepLength * (dir + i * Vector3.left), coll.bounds.size, 0f,
                     Vector2.right, 0, Enemy).collider;
 
             if (enemy)
