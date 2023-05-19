@@ -13,6 +13,27 @@ public class Character : MonoBehaviour
     public void InitialiseCharacter() 
     {
         coll = gameObject.GetComponent<Collider2D>();
+        FixPosition();
+    }
+
+    private void FixPosition() 
+    {
+        var fixedPos = new Vector2(FixCoord(transform.position.x),
+            FixCoord(transform.position.y));
+        transform.position = fixedPos;
+    }
+
+    private float FixCoord(float coord) 
+    {
+        var delta = stepLength / 2;
+        Debug.Log(delta);
+        float left;
+        if (coord >= 0)
+            left = coord % stepLength;
+        else
+         left = stepLength + (coord % stepLength);
+
+        return coord - left + delta;
     }
 
     public bool IsDirectionFree(Vector3 dir) 
