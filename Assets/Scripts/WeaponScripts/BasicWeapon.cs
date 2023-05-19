@@ -12,8 +12,12 @@ public abstract class BasicWeapon : MonoBehaviour
     public Collider2D coll { get; set;}
     public float stepLength { get; set;}
 
-
-    public abstract void Inisialise();
+    private void Start()
+    {
+        InisialiseBaseInfo();
+    }
+    public abstract void InisialiseBaseInfo();
+    public abstract void InisialisePlayer();
 
     public void Attack(Vector3 attackDirection)
     {

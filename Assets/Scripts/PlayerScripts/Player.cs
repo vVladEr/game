@@ -12,12 +12,11 @@ namespace Game
         public const float DeltaTime = 1f;
         public const float Eps = 0.1f;
         public const float mathEps = 0.0001f;
-        public BasicWeapon Weapon;
+        private Inventory inventory;
         void Start()
         {
             InitialiseCharacter();
-            Weapon = gameObject.AddComponent<Axe>();
-            Weapon.Inisialise();
+            inventory = gameObject.GetComponent<Inventory>();
         }
 
         void Update()
@@ -69,13 +68,15 @@ namespace Game
             else if (Math.Abs(directionVector.x + stepLength) < mathEps)
                 GetComponent<SpriteRenderer>().flipX = true;
 
-            Weapon.Attack(directionVector.normalized);
-            if (!Weapon.AttackSucc && IsDirectionFree(directionVector.normalized))
+            inventory.EquipedWeapon.Attack(directionVector.normalized);
+            if (!inventory.EquipedWeapon.AttackSucc &&
+                IsDirectionFree(directionVector.normalized))
             {
                 newPosition = currentPosition + directionVector;
             }
             transform.position = newPosition;
             isAllowedToMove = false;
+            inventory.TakeWeaponOnThisTurn = false;
         }
     }
 }

@@ -20,7 +20,7 @@ public class Monster : Character
     {
         InitialiseCharacter();
         Weapon = GetComponent<Dagger>();
-        Weapon.Inisialise();
+        Weapon.InisialisePlayer();
     }
 
     void Update()
@@ -71,7 +71,6 @@ public class Monster : Character
         var tick = (int)(curTime / DeltaTime);
         if (curTime % DeltaTime < Eps && tick != currentTick) 
         {
-            Debug.Log(tick);
             currentTick = tick;
             return true;
         }

@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class Bow : BasicWeapon
 {
-    public override void Inisialise()
+    public override void InisialiseBaseInfo()
     {
         Name = "Bow";
         Damage = 4;
+    }
+    public override void InisialisePlayer()
+    {
+        InisialiseBaseInfo();
         coll = gameObject.GetComponent<Collider2D>();
         stepLength = gameObject.GetComponent<Character>().stepLength;
         Enemy = gameObject.GetComponent<Character>().Enemy;

@@ -26,7 +26,6 @@ public class Character : MonoBehaviour
     private float FixCoord(float coord) 
     {
         var delta = stepLength / 2;
-        Debug.Log(delta);
         float left;
         if (coord >= 0)
             left = coord % stepLength;
