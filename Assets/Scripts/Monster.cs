@@ -8,11 +8,12 @@ public class Monster : Character
 {
     [SerializeField] public Player player;
     private float activationDistance = 0.64f; // Можно вынести в константу
-    public const float DeltaTime = 1f;
+    public const float DeltaTime = 0.5f;
     private const float Eps = 0.001f;
     private float mathEps = 0.0001f;
     public const int TurnsDelay = 1;
     private int turnsTimer = TurnsDelay;
+    private int currentTick = -1;
     public Dagger Weapon;
 
     void Start()
@@ -39,9 +40,8 @@ public class Monster : Character
                 GetComponent<SpriteRenderer>().flipX = false;
             else if (directionVector.x == -stepLength)
                 GetComponent<SpriteRenderer>().flipX = true;
-
             Weapon.Attack(directionVector.normalized);
-            if (!Weapon.AttackSucc)
+            if (!Weapon.AttackSucc && IsDirectionFree(directionVector.normalized))
             {
                 transform.position = directionVector + (Vector2)transform.position;
             }
@@ -68,9 +68,13 @@ public class Monster : Character
         if (GetDistanceToPlayer() >= activationDistance)
             return false;
         var curTime = Time.time;
-        if (curTime % DeltaTime < Eps ||
-            curTime % DeltaTime > DeltaTime - Eps)
+        var tick = (int)(curTime / DeltaTime);
+        if (curTime % DeltaTime < Eps && tick != currentTick) 
+        {
+            Debug.Log(tick);
+            currentTick = tick;
             return true;
+        }
         return false;
     }
 

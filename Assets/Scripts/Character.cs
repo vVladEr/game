@@ -9,40 +9,15 @@ public class Character : MonoBehaviour
     [SerializeField] public LayerMask Enemy;
     public Collider2D coll;
     public float stepLength = 0.16f;
-    public IReadOnlyDictionary<Vector2, Func<bool>> movementDictionary;
 
     public void InitialiseCharacter() 
     {
         coll = gameObject.GetComponent<Collider2D>();
-        movementDictionary = new Dictionary<Vector2, Func<bool>>(){
-                {new Vector2(stepLength, 0), () => IsRightFree()},
-                {new Vector2(-stepLength, 0),() => IsLeftFree()},
-                {new Vector2(0, stepLength), () => IsTopFree()},
-                {new Vector2(0, -stepLength),() => IsBottomFree()}
-            };
     }
 
-    public bool IsRightFree()
+    public bool IsDirectionFree(Vector3 dir) 
     {
-        return !Physics2D.BoxCast(coll.bounds.center + stepLength * Vector3.right, coll.bounds.size, 0f,
+        return !Physics2D.BoxCast(coll.bounds.center + stepLength * dir, coll.bounds.size, 0f,
             Vector2.right, 0, CollidebaleAndFriends);
-    }
-
-    public bool IsLeftFree()
-    {
-        return !Physics2D.BoxCast(coll.bounds.center + stepLength * Vector3.left, coll.bounds.size, 0f,
-            Vector2.left, 0, CollidebaleAndFriends);
-    }
-
-    public bool IsTopFree()
-    {
-        return !Physics2D.BoxCast(coll.bounds.center + stepLength * Vector3.up, coll.bounds.size, 0f,
-            Vector2.up, 0, CollidebaleAndFriends);
-    }
-
-    public bool IsBottomFree()
-    {
-        return !Physics2D.BoxCast(coll.bounds.center + stepLength * Vector3.down, coll.bounds.size, 0f,
-            Vector2.down, 0, CollidebaleAndFriends);
     }
 }
