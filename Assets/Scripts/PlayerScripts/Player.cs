@@ -7,10 +7,11 @@ namespace Game
     {
         public Vector2 InitialPosition;
         private bool isAllowedToMove = false;
+        public bool RightTime = false;
         public Vector2 Position => transform.position;
 
         public const float DeltaTime = 1f;
-        public const float Eps = 0.1f;
+        public const float Eps = 0.15f;
         public const float mathEps = 0.0001f;
         private Inventory inventory;
         void Start()
@@ -49,9 +50,13 @@ namespace Game
         {
             var curTime = Time.time;
             if (curTime % DeltaTime < Eps ||
-                curTime % DeltaTime > DeltaTime - Eps)
-                isAllowedToMove = true;
-            return isAllowedToMove;
+                curTime % DeltaTime > (DeltaTime - Eps))
+            {
+                RightTime = true;
+                return true;
+            }
+            RightTime = false;
+            return false;
         }
 
 
@@ -73,10 +78,9 @@ namespace Game
                 IsDirectionFree(directionVector.normalized))
             {
                 newPosition = currentPosition + directionVector;
+                inventory.TakeWeaponOnThisTurn = false;
             }
             transform.position = newPosition;
-            isAllowedToMove = false;
-            inventory.TakeWeaponOnThisTurn = false;
         }
     }
 }
