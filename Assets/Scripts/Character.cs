@@ -23,7 +23,11 @@ public class Character : MonoBehaviour
         animator.SetFloat("Speed", Math.Abs(velocity.magnitude));
         if (isMoving) 
             transform.position = Vector2.SmoothDamp(transform.position, newPosition, ref velocity, dampingTime);
-        if (Math.Abs((Position - newPosition).magnitude) < 0.0000001f) isMoving = false;
+        if (Math.Abs((Position - newPosition).magnitude) < 0.0000001f) 
+        {
+            isMoving = false;
+            FixPosition();
+        } 
     }
     
     public void InitialiseCharacter() 
@@ -32,7 +36,7 @@ public class Character : MonoBehaviour
         FixPosition();
     }
 
-    private void FixPosition() 
+    public void FixPosition() 
     {
         var fixedPos = new Vector2(FixCoord(transform.position.x),
             FixCoord(transform.position.y));
