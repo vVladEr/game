@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class PirsuingMonster : BasicMonster
 {
-    [SerializeField] public Player player;
     private float activationDistance = 0.64f;
 
     public override void InitialiseMonster()

@@ -8,8 +8,6 @@ namespace Game
         public Vector2 InitialPosition;
         public bool RightTime = false;
 
-        public const float DeltaTime = 1f;
-        public const float Eps = 0.15f;
         public const float mathEps = 0.0001f;
         private Inventory inventory;
         void Start()

@@ -5,17 +5,17 @@ using Game;
 
 public abstract class BasicMonster : Character
 {
-    public const float DeltaTime = 1f;
-    public const float Eps = 0.001f;
     public float mathEps = 0.0001f;
     public int TurnsDelay = 1;
     public int turnsTimer;
     public int currentTick = -1;
     public BasicWeapon Weapon;
+    public Player player;
     void Start()
     {
         InitialiseCharacter();
         InitialiseMonster();
+        player = GameObject.Find("Player").GetComponent<Player>();
     }
     private void Update()
     {
@@ -33,7 +33,7 @@ public abstract class BasicMonster : Character
     {
         var curTime = Time.time;
         var tick = (int)(curTime / DeltaTime);
-        if (tick != currentTick)
+        if (tick != currentTick && (curTime - tick * DeltaTime) > Eps+ + player.dampingTime)
         {
             Debug.Log(tick);
             currentTick = tick;

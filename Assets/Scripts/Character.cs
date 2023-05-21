@@ -6,6 +6,8 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public Vector2 Position => transform.position;
+    public const float DeltaTime = 1f;
+    public const float Eps = 0.15f;
 
     public Vector2 velocity = Vector2.zero;
     public float dampingTime = 0.15f;
