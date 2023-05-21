@@ -53,7 +53,7 @@ public class Character : MonoBehaviour
 
     public bool IsDirectionFree(Vector3 dir) 
     {
-        return !Physics2D.BoxCast(coll.bounds.center + stepLength * dir, coll.bounds.size, 0f,
+        return !Physics2D.BoxCast(coll.bounds.center + stepLength * dir.normalized, coll.bounds.size, 0f,
             Vector2.right, 0, CollidebaleAndFriends);
     }
 }
