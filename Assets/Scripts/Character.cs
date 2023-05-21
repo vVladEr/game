@@ -21,9 +21,9 @@ public class Character : MonoBehaviour
     public void MoveSmoothly()
     {
         animator.SetFloat("Speed", Math.Abs(velocity.magnitude));
-            if (isMoving)
-                transform.position = Vector2.SmoothDamp(transform.position, newPosition, ref velocity, dampingTime);
-            if (Math.Abs((Position - newPosition).magnitude) < 0.000f) isMoving = false;
+        if (isMoving) 
+            transform.position = Vector2.SmoothDamp(transform.position, newPosition, ref velocity, dampingTime);
+        if (Math.Abs((Position - newPosition).magnitude) < 0.0001f) isMoving = false;
     }
     
     public void InitialiseCharacter() 

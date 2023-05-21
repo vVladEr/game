@@ -6,7 +6,6 @@ namespace Game
     public class Player : Character
     {
         public Vector2 InitialPosition;
-        private bool isAllowedToMove = false;
         public bool RightTime = false;
 
         public const float DeltaTime = 1f;
@@ -20,10 +19,13 @@ namespace Game
         }
 
         void Update()
-        {   
+        {
             MoveSmoothly();
-            if (IsAllowedToMove())
+            if (IsAllowedToMove()) 
+            {
                 PlayerUpdate();
+            }
+
         }
 
         private Vector2 GetDirectionVector()
@@ -79,8 +81,8 @@ namespace Game
             {
                 newPosition = currentPosition + directionVector;
                 inventory.TakeWeaponOnThisTurn = false;
+                isMoving = true;
             }
-            isMoving = true;
         }
     }
 }

@@ -16,13 +16,19 @@ public class Spear : BasicWeapon
         coll = gameObject.GetComponent<Collider2D>();
         stepLength = gameObject.GetComponent<Character>().stepLength;
         Enemy = gameObject.GetComponent<Character>().Enemy;
+        Barriers = gameObject.GetComponent<Character>().CollidebaleAndFriends;
     }
 
     public override List<Collider2D> IsEnemyInDirection(Vector3 dir)
     {
+        dir = dir.normalized;
         var enemies = new List<Collider2D>();
         for (var i = 1; i < 3; i++)
         {
+            var barrier = Physics2D.BoxCast(coll.bounds.center + i * stepLength * dir, coll.bounds.size, 0f,
+                Vector2.right, 0, Barriers);
+            if (barrier)
+                break;
             var enemy = Physics2D.BoxCast(coll.bounds.center + i * stepLength * dir, coll.bounds.size, 0f,
                 Vector2.right, 0, Enemy).collider;
             if (enemy)

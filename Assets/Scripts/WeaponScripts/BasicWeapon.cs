@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class BasicWeapon : MonoBehaviour
 {
     public LayerMask Enemy;
+    public LayerMask Barriers;
     public string Name;
     public int Damage;
     public bool AttackSucc = false;

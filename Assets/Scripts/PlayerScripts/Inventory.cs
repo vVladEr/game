@@ -2,22 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Game;
 
 public class Inventory : MonoBehaviour
 {
     public BasicWeapon EquipedWeapon;
     public List<GameObject> Weapons;
     public bool TakeWeaponOnThisTurn = false;
+    private Player player;
 
 
     private void Start()
     {
         EquipedWeapon = gameObject.AddComponent<Dagger>();
         EquipedWeapon.InisialisePlayer();
+        player = gameObject.GetComponent<Player>();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!TakeWeaponOnThisTurn && collision.gameObject.tag == "Weapon") 
+        if (!player.isMoving && !TakeWeaponOnThisTurn && collision.gameObject.tag == "Weapon") 
         {
             Instantiate(GetWeaponToDrop(), transform.position, transform.rotation);
             CollectWeapon(collision);
@@ -51,7 +54,11 @@ public class Inventory : MonoBehaviour
                 else
                     EquipedWeapon = gameObject.GetComponent<Bow>();
                 break;
-            default:
+            case Dagger:
+                if (!gameObject.GetComponent<Dagger>())
+                    EquipedWeapon = gameObject.AddComponent<Dagger>();
+                else
+                    EquipedWeapon = gameObject.GetComponent<Dagger>();
                 break;
         }
         Debug.Log(EquipedWeapon);

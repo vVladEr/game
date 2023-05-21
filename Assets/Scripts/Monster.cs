@@ -8,7 +8,7 @@ public class Monster : Character
 {
     [SerializeField] public Player player;
     private float activationDistance = 0.64f; // ����� ������� � ���������
-    public const float DeltaTime = 0.5f;
+    public const float DeltaTime = 1f;
     private const float Eps = 0.001f;
     private float mathEps = 0.0001f;
     public const int TurnsDelay = 1;

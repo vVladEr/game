@@ -16,6 +16,7 @@ public class Dagger : BasicWeapon
         coll = gameObject.GetComponent<Collider2D>();
         stepLength = gameObject.GetComponent<Character>().stepLength;
         Enemy = gameObject.GetComponent<Character>().Enemy;
+        Barriers = gameObject.GetComponent<Character>().CollidebaleAndFriends;
     }
 
     public override List<Collider2D> IsEnemyInDirection(Vector3 dir) 
