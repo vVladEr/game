@@ -48,7 +48,7 @@ public class Monster : Character
                 isMoving = true;
             }
         }
-        else 
+        else
             turnsTimer--;
 
     }
@@ -71,11 +71,14 @@ public class Monster : Character
             return false;
         var curTime = Time.time;
         var tick = (int)(curTime / DeltaTime);
-        if (curTime % DeltaTime < Eps && tick != currentTick) 
+        //curTime % DeltaTime < Eps &&
+        if (tick != currentTick)
         {
+            Debug.Log(tick);
             currentTick = tick;
             return true;
         }
+
         return false;
     }
 

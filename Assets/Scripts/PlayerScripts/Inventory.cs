@@ -61,7 +61,6 @@ public class Inventory : MonoBehaviour
                     EquipedWeapon = gameObject.GetComponent<Dagger>();
                 break;
         }
-        Debug.Log(EquipedWeapon);
         EquipedWeapon.InisialisePlayer();   
     }
 
@@ -69,11 +68,8 @@ public class Inventory : MonoBehaviour
     {
         foreach (var weapon in Weapons) 
         {
-            Debug.Log(weapon.GetComponent<BasicWeapon>().Name);
-            Debug.Log(EquipedWeapon.Name);
             if (weapon.GetComponent<BasicWeapon>().Name == EquipedWeapon.Name) 
             {
-                Debug.Log(weapon.GetComponent<BasicWeapon>().Name);
                 return weapon;
             }
         }
