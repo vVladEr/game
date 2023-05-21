@@ -7,7 +7,7 @@ using UnityEngine;
 public class Monster : Character
 {
     [SerializeField] public Player player;
-    private float activationDistance = 0.64f; // Можно вынести в константу
+    private float activationDistance = 0.64f; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public const float DeltaTime = 0.5f;
     private const float Eps = 0.001f;
     private float mathEps = 0.0001f;
@@ -25,6 +25,7 @@ public class Monster : Character
 
     void Update()
     {
+        MoveSmoothly();
         if (CanUpdate())
             MonsterUpdate();
     }
@@ -43,7 +44,8 @@ public class Monster : Character
             Weapon.Attack(directionVector.normalized);
             if (!Weapon.AttackSucc && IsDirectionFree(directionVector.normalized))
             {
-                transform.position = directionVector + (Vector2)transform.position;
+                newPosition = directionVector + (Vector2)transform.position;
+                isMoving = true;
             }
         }
         else 
@@ -53,8 +55,8 @@ public class Monster : Character
 
     private Vector2 GetDirectionByDifference(Vector2 difference)
     {
-        var activationDifference = 0f; // Он может шагнуть на Playe => обработать коллизию или сравнивать с 1.1
-                                          // Затем вынести в констнату
+        var activationDifference = 0f; // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ Playe => пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ 1.1
+                                          // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (difference.x - activationDifference > mathEps) return new Vector2(stepLength, 0);
         if (difference.x - activationDifference < -mathEps) return new Vector2(-stepLength, 0);
         if (difference.y - activationDifference > mathEps) return new Vector2(0, stepLength);

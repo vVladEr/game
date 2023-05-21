@@ -8,7 +8,6 @@ namespace Game
         public Vector2 InitialPosition;
         private bool isAllowedToMove = false;
         public bool RightTime = false;
-        public Vector2 Position => transform.position;
 
         public const float DeltaTime = 1f;
         public const float Eps = 0.15f;
@@ -21,7 +20,8 @@ namespace Game
         }
 
         void Update()
-        {
+        {   
+            MoveSmoothly();
             if (IsAllowedToMove())
                 PlayerUpdate();
         }
@@ -66,7 +66,7 @@ namespace Game
             if (directionVector == Vector2.zero)
                 return;
             Vector2 currentPosition = transform.position;
-            Vector2 newPosition = currentPosition;
+            newPosition = currentPosition;
 
             if (Math.Abs(directionVector.x - stepLength) < mathEps)
                 GetComponent<SpriteRenderer>().flipX = false;
@@ -80,7 +80,7 @@ namespace Game
                 newPosition = currentPosition + directionVector;
                 inventory.TakeWeaponOnThisTurn = false;
             }
-            transform.position = newPosition;
+            isMoving = true;
         }
     }
 }

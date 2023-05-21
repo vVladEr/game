@@ -1,3 +1,4 @@
+using System;
 using Game;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,19 +6,10 @@ using UnityEngine.UI;
 public class TickAppearenceManager : MonoBehaviour
 {
     [SerializeField] private Player player;
-    [SerializeField] private Image TickImage;
-    [SerializeField] private Sprite[] TickSprites;
-
-    private void Start()
-    {
-        player = FindObjectOfType<Player>();
-    }
+    [SerializeField] private Animator animator;
 
     private void Update()
     {
-        if (player.RightTime)
-            TickImage.sprite = TickSprites[0];
-        else
-            TickImage.sprite = TickSprites[1];
+        animator.SetBool("shouldSmash", player.RightTime);
     }
 }

@@ -5,11 +5,27 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public Vector2 Position => transform.position;
+
+    public Vector2 velocity = Vector2.zero;
+    public float dampingTime = 0.15f;
+    public Vector2 newPosition;
+    public bool isMoving = false;
+    public Animator animator;
+
     [SerializeField] public LayerMask CollidebaleAndFriends;
     [SerializeField] public LayerMask Enemy;
     public Collider2D coll;
     public float stepLength = 0.16f;
 
+    public void MoveSmoothly()
+    {
+        animator.SetFloat("Speed", Math.Abs(velocity.magnitude));
+            if (isMoving)
+                transform.position = Vector2.SmoothDamp(transform.position, newPosition, ref velocity, dampingTime);
+            if (Math.Abs((Position - newPosition).magnitude) < 0.000f) isMoving = false;
+    }
+    
     public void InitialiseCharacter() 
     {
         coll = gameObject.GetComponent<Collider2D>();
