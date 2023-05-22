@@ -34,7 +34,7 @@ public class Inventory : MonoBehaviour
                     break;
 
                 case "SmallHealthPotion":
-                    gameObject.GetComponent<PlayerHp>().Hp += 2;
+                    gameObject.GetComponent<PlayerHp>().GainHealth(2);
                     Destroy(collision.gameObject);
                     TakeItemOnThisTurn = true;
                     break;
