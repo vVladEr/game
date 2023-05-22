@@ -10,6 +10,7 @@ public class Inventory : MonoBehaviour
     public List<GameObject> Weapons;
     public bool TakeWeaponOnThisTurn = false;
     private Player player;
+    private AudioSource collectWeaponAudio;
 
 
     private void Start()
@@ -17,6 +18,7 @@ public class Inventory : MonoBehaviour
         EquipedWeapon = gameObject.AddComponent<Dagger>();
         EquipedWeapon.InisialisePlayer();
         player = gameObject.GetComponent<Player>();
+        collectWeaponAudio = GameObject.Find("WeaponChange").GetComponent<AudioSource>();
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -61,6 +63,8 @@ public class Inventory : MonoBehaviour
                     EquipedWeapon = gameObject.GetComponent<Dagger>();
                 break;
         }
+        collectWeaponAudio.Play();
+
         EquipedWeapon.InisialisePlayer();   
     }
 

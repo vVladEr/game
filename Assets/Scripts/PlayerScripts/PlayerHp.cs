@@ -9,12 +9,19 @@ public class PlayerHp : MonoBehaviour
     public int Hp = 2;
     public GameObject Hitmarker;
     public bool GetHit = false;
+    private AudioSource hurtAudio;
+
+    public void Start()
+    {
+        hurtAudio = GameObject.Find("PlayerHurtSound").GetComponent<AudioSource>();
+    }
 
     public void TakeHit(int damage)
     {
         Hp -= damage;
         if (Hp <= 0)
             RestartLevel();
+        hurtAudio.Play();
         StartCoroutine(DamageFlashRed());
     }
 

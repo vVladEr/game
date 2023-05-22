@@ -9,11 +9,13 @@ namespace Game
         public bool RightTime = false;
 
         public const float mathEps = 0.0001f;
+        private AudioSource weaponAudio;
         private Inventory inventory;
         void Start()
         {
             InitialiseCharacter();
             inventory = gameObject.GetComponent<Inventory>();
+            weaponAudio = GameObject.Find("CurrentWeapon").GetComponent<AudioSource>();
         }
 
         void Update()
@@ -74,6 +76,8 @@ namespace Game
                 GetComponent<SpriteRenderer>().flipX = true;
 
             inventory.EquipedWeapon.Attack(directionVector.normalized);
+            if (inventory.EquipedWeapon.AttackSucc)
+                weaponAudio.Play();
             if (!inventory.EquipedWeapon.AttackSucc &&
                 IsDirectionFree(directionVector.normalized))
             {
