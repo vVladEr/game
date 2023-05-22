@@ -35,7 +35,6 @@ public abstract class BasicMonster : Character
         var tick = (int)(curTime / DeltaTime);
         if (tick != currentTick && (curTime - tick * DeltaTime) > Eps+ + player.dampingTime)
         {
-            Debug.Log(tick);
             currentTick = tick;
             return true;
         }

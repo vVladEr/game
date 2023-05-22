@@ -82,7 +82,7 @@ namespace Game
                 IsDirectionFree(directionVector.normalized))
             {
                 newPosition = currentPosition + directionVector;
-                inventory.TakeWeaponOnThisTurn = false;
+                inventory.TakeItemOnThisTurn = false;
                 isMoving = true;
             }
         }

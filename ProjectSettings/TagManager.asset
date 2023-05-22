@@ -9,6 +9,7 @@ TagManager:
   - Monster
   - Weapon
   - Coin
+  - SmallHealthPotion
   layers:
   - Default
   - TransparentFX

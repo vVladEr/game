@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour
 {
     public BasicWeapon EquipedWeapon;
     public List<GameObject> Weapons;
-    public bool TakeWeaponOnThisTurn = false;
+    public bool TakeItemOnThisTurn = false;
     private Player player;
     private AudioSource collectWeaponAudio;
 
@@ -22,12 +22,23 @@ public class Inventory : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!player.isMoving && !TakeWeaponOnThisTurn && collision.gameObject.tag == "Weapon") 
+        if (!player.isMoving && !TakeItemOnThisTurn) 
         {
-            Instantiate(GetWeaponToDrop(), transform.position, transform.rotation);
-            CollectWeapon(collision);
-            Destroy(collision.gameObject);
-            TakeWeaponOnThisTurn = true;
+            switch (collision.gameObject.tag) 
+            {
+                case "Weapon":
+                    Instantiate(GetWeaponToDrop(), transform.position, transform.rotation);
+                    CollectWeapon(collision);
+                    Destroy(collision.gameObject);
+                    TakeItemOnThisTurn = true;
+                    break;
+
+                case "SmallHealthPotion":
+                    gameObject.GetComponent<PlayerHp>().Hp += 2;
+                    Destroy(collision.gameObject);
+                    TakeItemOnThisTurn = true;
+                    break;
+            }
         }
     }
 
