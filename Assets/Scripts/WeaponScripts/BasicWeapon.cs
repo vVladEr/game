@@ -12,6 +12,7 @@ public abstract class BasicWeapon : MonoBehaviour
     public bool AttackSucc = false;
     public Collider2D coll { get; set;}
     public float stepLength { get; set;}
+    public bool shouldMoveAfterHit = false;
 
     private void Start()
     {

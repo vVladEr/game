@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class Vase : BasicMonster
 {
-    public override bool CanUpdate()
-    {
-        return false;
-    }
-
     public override void InitialiseMonster()
     {
-        return;
+        turnsTimer = TurnsDelay;
+        Weapon = GetComponent<Dagger>();
+        Weapon.InisialisePlayer();
     }
 
     public override void MonsterUpdate()
     {
-        return;
+        if (turnsTimer == 0) turnsTimer = TurnsDelay;
+        else turnsTimer--;
+    }
+
+    public override bool CanUpdate()
+    {
+        return true;
     }
 }
