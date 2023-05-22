@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Game;
 
 public class PlayerHp : MonoBehaviour
 {
+
+    private Player player;
     public SpriteRenderer spriteRenderer;
     public bool GetHit = false;
     private AudioSource hurtAudio;
@@ -17,6 +20,7 @@ public class PlayerHp : MonoBehaviour
 
     public void Start()
     {
+        player = gameObject.GetComponent<Player>();
         maxHealth = health; 
         hurtAudio = GameObject.Find("PlayerHurt").GetComponent<AudioSource>();
     }
@@ -24,10 +28,15 @@ public class PlayerHp : MonoBehaviour
 
     private void Update()
     {
-        if(health > maxHealth)
+        UpdateHealhBar();
+    }
+
+    private void UpdateHealhBar() 
+    {
+        if (health > maxHealth)
             health = maxHealth;
         var heartsNumber = health / 2;
-        for (var i = 0; i < heartsImages.Length; i++) 
+        for (var i = 0; i < heartsImages.Length; i++)
         {
             if (i < heartsNumber)
                 heartsImages[i].sprite = heartsSprites[2];
@@ -37,6 +46,7 @@ public class PlayerHp : MonoBehaviour
         if (health % 2 == 1)
             heartsImages[heartsNumber].sprite = heartsSprites[1];
     }
+
     public void TakeHit(int damage)
     {
         health -= damage;
@@ -61,5 +71,18 @@ public class PlayerHp : MonoBehaviour
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.color = Color.white;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Debug.Log("ловушка");
+        if (!player.isMoving &&
+            collision.gameObject.tag == "Trap" &&
+             collision.GetComponent<Thorns>().IsActive) 
+        {
+            Debug.Log("сработала");
+            TakeHit(1000);
+        }
+
     }
 }
