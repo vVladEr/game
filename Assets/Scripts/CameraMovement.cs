@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Game;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -8,6 +9,12 @@ public class CameraMovement : MonoBehaviour
     
     [Range(0, 1)] public float DampingTime = 0.15f;
     [SerializeField] private Transform target;
+
+    void Start()
+    {
+        target = GameObject.Find("Player").GetComponent<Transform>();
+        transform.position = target.position;
+    }
 
     void Update()
     {
