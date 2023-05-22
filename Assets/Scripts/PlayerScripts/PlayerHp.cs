@@ -13,7 +13,7 @@ public class PlayerHp : MonoBehaviour
 
     public void Start()
     {
-        hurtAudio = GameObject.Find("PlayerHurtSound").GetComponent<AudioSource>();
+        hurtAudio = GameObject.Find("PlayerHurt").GetComponent<AudioSource>();
     }
 
     public void TakeHit(int damage)
