@@ -78,7 +78,7 @@ namespace Game
             inventory.EquipedWeapon.Attack(directionVector.normalized);
             if (inventory.EquipedWeapon.AttackSucc)
                 weaponAudio.Play();
-            if (!inventory.EquipedWeapon.AttackSucc &&
+            if ((inventory.EquipedWeapon.shouldMoveAfterHit || !inventory.EquipedWeapon.AttackSucc) &&
                 IsDirectionFree(directionVector.normalized))
             {
                 newPosition = currentPosition + directionVector;

@@ -9,6 +9,7 @@ public class Spear : BasicWeapon
     {
         Name = "Spear";
         Damage = 2;
+        shouldMoveAfterHit = true;
     }
     public override void InisialisePlayer()
     {
