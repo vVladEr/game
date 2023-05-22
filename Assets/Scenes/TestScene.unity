@@ -2763,12 +2763,15 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0}
   isMoving: 0
   animator: {fileID: 947419037}
-  CollidebaleAndFriends:
+  AnyCollidable:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 448
   Enemy:
     serializedVersion: 2
     m_Bits: 256
+  NotEnemies:
+    serializedVersion: 2
+    m_Bits: 192
   coll: {fileID: 0}
   stepLength: 0.16
   mathEps: 0.0001
@@ -2874,12 +2877,15 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0}
   isMoving: 0
   animator: {fileID: 990895391}
-  CollidebaleAndFriends:
+  AnyCollidable:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 896
   Enemy:
     serializedVersion: 2
     m_Bits: 256
+  NotEnemies:
+    serializedVersion: 2
+    m_Bits: 192
   coll: {fileID: 0}
   stepLength: 0.16
   mathEps: 0.0001
@@ -3595,12 +3601,15 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0}
   isMoving: 0
   animator: {fileID: 1072348214}
-  CollidebaleAndFriends:
+  AnyCollidable:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 448
   Enemy:
     serializedVersion: 2
     m_Bits: 256
+  NotEnemies:
+    serializedVersion: 2
+    m_Bits: 192
   coll: {fileID: 0}
   stepLength: 0.16
   mathEps: 0.0001
@@ -3803,12 +3812,15 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0}
   isMoving: 0
   animator: {fileID: 1093690547}
-  CollidebaleAndFriends:
+  AnyCollidable:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 448
   Enemy:
     serializedVersion: 2
     m_Bits: 128
+  NotEnemies:
+    serializedVersion: 2
+    m_Bits: 320
   coll: {fileID: 0}
   stepLength: 0.16
   InitialPosition: {x: 5.2, y: -0.4}
@@ -4252,12 +4264,15 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0}
   isMoving: 0
   animator: {fileID: 1128358433}
-  CollidebaleAndFriends:
+  AnyCollidable:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 448
   Enemy:
     serializedVersion: 2
     m_Bits: 256
+  NotEnemies:
+    serializedVersion: 2
+    m_Bits: 192
   coll: {fileID: 0}
   stepLength: 0.16
   mathEps: 0.0001
@@ -4514,12 +4529,15 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0}
   isMoving: 0
   animator: {fileID: 1159698613}
-  CollidebaleAndFriends:
+  AnyCollidable:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 448
   Enemy:
     serializedVersion: 2
     m_Bits: 256
+  NotEnemies:
+    serializedVersion: 2
+    m_Bits: 192
   coll: {fileID: 0}
   stepLength: 0.16
   mathEps: 0.0001

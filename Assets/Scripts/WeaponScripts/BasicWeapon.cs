@@ -23,7 +23,7 @@ public abstract class BasicWeapon : MonoBehaviour
     public void Attack(Vector3 attackDirection)
     {
         AttackSucc = false;
-        var enemies = IsEnemyInDirection(attackDirection.normalized);
+        var enemies = GetEnemiesInDirection(attackDirection.normalized);
         foreach (var enemy in enemies)
         {
             Hit(enemy);
@@ -32,7 +32,9 @@ public abstract class BasicWeapon : MonoBehaviour
     }
 
 
-    public abstract List<Collider2D> IsEnemyInDirection(Vector3 dir);
+    public abstract List<Collider2D> GetEnemiesInDirection(Vector3 dir);
+
+    public abstract bool IsEnemyInDirection(Vector3 dir);
 
     public void Hit(Collider2D hit)
     {

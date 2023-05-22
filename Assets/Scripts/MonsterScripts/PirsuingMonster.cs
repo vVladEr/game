@@ -43,19 +43,23 @@ public class PirsuingMonster : BasicMonster
     {
         Debug.Log(difference);
         if (difference.x > mathEps 
-            && IsDirectionFree(new Vector2(1, 0)))
+            && ( Weapon.IsEnemyInDirection(new Vector2(1, 0))
+            ||IsDirectionFree(new Vector2(1, 0))))
             return new Vector2(stepLength, 0);
 
         if (difference.x < -mathEps
-            && IsDirectionFree(new Vector2(-1, 0)))
+            && (Weapon.IsEnemyInDirection(new Vector2(-1, 0))
+            || IsDirectionFree(new Vector2(-1, 0))))
             return new Vector2(-stepLength, 0);
 
         if (difference.y > mathEps
-            && IsDirectionFree(new Vector2(0, 1))) 
+            && (Weapon.IsEnemyInDirection(new Vector2(0, 1))
+            || IsDirectionFree(new Vector2(0, 1))))
             return new Vector2(0, stepLength);
 
         if (difference.y < -mathEps 
-            && IsDirectionFree(new Vector2(0, -1))) 
+            && (Weapon.IsEnemyInDirection(new Vector2(0, -1))
+            || IsDirectionFree(new Vector2(0, -1))))
             return new Vector2(0, -stepLength);
 
         return new Vector2(0, 0);

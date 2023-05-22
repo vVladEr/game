@@ -15,8 +15,9 @@ public class Character : MonoBehaviour
     public bool isMoving = false;
     public Animator animator;
 
-    [SerializeField] public LayerMask CollidebaleAndFriends;
+    [SerializeField] public LayerMask AnyCollidable;
     [SerializeField] public LayerMask Enemy;
+    [SerializeField] public LayerMask NotEnemies;
     public Collider2D coll;
     public float stepLength = 0.16f;
 
@@ -25,7 +26,7 @@ public class Character : MonoBehaviour
         animator.SetFloat("Speed", Math.Abs(velocity.magnitude));
         if (isMoving) 
             transform.position = Vector2.SmoothDamp(transform.position, newPosition, ref velocity, dampingTime);
-        if (Math.Abs((Position - newPosition).magnitude) < 0.0000001f) 
+        if (Math.Abs((Position - newPosition).magnitude) < 0.00001f) 
         {
             isMoving = false;
             FixPosition();
@@ -60,6 +61,6 @@ public class Character : MonoBehaviour
     public bool IsDirectionFree(Vector3 dir) 
     {
         return !Physics2D.BoxCast(coll.bounds.center + stepLength * dir.normalized, coll.bounds.size, 0f,
-            Vector2.right, 0, CollidebaleAndFriends);
+            Vector2.right, 0, AnyCollidable);
     }
 }
