@@ -85,6 +85,7 @@ public class Inventory : MonoBehaviour
         {
             if (weapon.GetComponent<BasicWeapon>().Name == EquipedWeapon.Name) 
             {
+                weapon.GetComponent<BasicWeapon>().DropAdditinalDamage();
                 return weapon;
             }
         }

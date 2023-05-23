@@ -5,9 +5,8 @@ namespace Game
 {
     public class Player : Character
     {
-        public Vector2 InitialPosition;
+        private Vector2 InitialPosition;
         public bool RightTime = false;
-
         public const float mathEps = 0.0001f;
         private AudioSource weaponAudio;
         private Inventory inventory;
@@ -46,6 +45,8 @@ namespace Game
         {
             if (Input.anyKeyDown)
                 PlayerAct();
+            else if (IsAfterTheTick())
+                inventory.EquipedWeapon.DropAdditinalDamage();
         }
 
         private bool IsAllowedToMove() 
@@ -65,8 +66,11 @@ namespace Game
         private void PlayerAct()
         {
             var directionVector = GetDirectionVector();
-            if (directionVector == Vector2.zero)
+            if (directionVector == Vector2.zero) 
+            {
                 return;
+            }
+
             Vector2 currentPosition = transform.position;
             newPosition = currentPosition;
 
@@ -76,8 +80,11 @@ namespace Game
                 GetComponent<SpriteRenderer>().flipX = true;
 
             inventory.EquipedWeapon.Attack(directionVector.normalized);
-            if (inventory.EquipedWeapon.AttackSucc)
+            if (inventory.EquipedWeapon.AttackSucc) 
+            {
                 weaponAudio.Play();
+            }
+
             if ((inventory.EquipedWeapon.shouldMoveAfterHit || !inventory.EquipedWeapon.AttackSucc) &&
                 IsDirectionFree(directionVector.normalized))
             {

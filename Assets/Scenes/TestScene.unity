@@ -230,7 +230,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 260078116}
   - component: {fileID: 260078115}
   - component: {fileID: 260078117}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 284009977}
   - component: {fileID: 284009978}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3393,7 +3393,7 @@ MonoBehaviour:
   IsActive: 0
   deltaTime: 1
   sprites:
-  - {fileID: 21300000, guid: 989eee080ba080c41b786c28d7b46757, type: 3}
+  - {fileID: 21300000, guid: d64a588949647fb4687fee3943165d65, type: 3}
   - {fileID: 21300000, guid: 3f8e708a029cadc42ba8bea6b6236862, type: 3}
 --- !u!61 &903360033
 BoxCollider2D:
@@ -3462,7 +3462,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 989eee080ba080c41b786c28d7b46757, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d64a588949647fb4687fee3943165d65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4845,7 +4845,7 @@ MonoBehaviour:
   IsActive: 0
   deltaTime: 1
   sprites:
-  - {fileID: 21300000, guid: 989eee080ba080c41b786c28d7b46757, type: 3}
+  - {fileID: 21300000, guid: d64a588949647fb4687fee3943165d65, type: 3}
   - {fileID: 21300000, guid: 3f8e708a029cadc42ba8bea6b6236862, type: 3}
 --- !u!61 &1096203344
 BoxCollider2D:
@@ -4914,7 +4914,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 989eee080ba080c41b786c28d7b46757, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d64a588949647fb4687fee3943165d65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6548,7 +6548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1450287002}
   - component: {fileID: 1450287003}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: WeaponChange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6719,7 +6719,7 @@ TilemapRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 3
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -13596,7 +13596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1805763060}
   - component: {fileID: 1805763061}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: PlayerHurt
   m_TagString: Untagged
   m_Icon: {fileID: 0}

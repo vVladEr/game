@@ -8,7 +8,6 @@ public abstract class BasicMonster : Character
     public float mathEps = 0.0001f;
     public int TurnsDelay = 1;
     public int turnsTimer;
-    public int currentTick = -1;
     public BasicWeapon Weapon;
     public Player player;
     void Start()
@@ -33,7 +32,7 @@ public abstract class BasicMonster : Character
     {
         var curTime = Time.time;
         var tick = (int)(curTime / DeltaTime);
-        if (tick != currentTick && (curTime - tick * DeltaTime) > Eps+ + player.dampingTime)
+        if (tick != currentTick && (curTime - tick * DeltaTime) > Eps+ player.dampingTime)
         {
             currentTick = tick;
             return true;

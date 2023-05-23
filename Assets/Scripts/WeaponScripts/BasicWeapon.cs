@@ -10,6 +10,7 @@ public abstract class BasicWeapon : MonoBehaviour
     public string Name;
     public int Damage;
     public bool AttackSucc = false;
+    public int AdditionalDamage = 0;
     public Collider2D coll { get; set;}
     public float stepLength { get; set;}
     public bool shouldMoveAfterHit = false;
@@ -30,6 +31,11 @@ public abstract class BasicWeapon : MonoBehaviour
             Hit(enemy);
             AttackSucc = true;
         }
+        if (AttackSucc)
+        {
+            AdditionalDamage = Math.Min(2 * Damage, AdditionalDamage + 1);
+        }
+
     }
 
 
@@ -41,10 +47,15 @@ public abstract class BasicWeapon : MonoBehaviour
     {
         if (hit.GetComponent<EnemyHp>())
         {
-            hit.GetComponent<EnemyHp>().TakeHit(Damage);
+            hit.GetComponent<EnemyHp>().TakeHit(Damage + AdditionalDamage);
         }
         if (hit.GetComponent<PlayerHp>())
             hit.GetComponent<PlayerHp>().TakeHit(Damage);
     }
 
+    public void DropAdditinalDamage() 
+    {
+        AdditionalDamage = 0;
+    }
+        
 }

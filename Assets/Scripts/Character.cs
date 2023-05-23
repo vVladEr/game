@@ -14,6 +14,7 @@ public class Character : MonoBehaviour
     public Vector2 newPosition;
     public bool isMoving = false;
     public Animator animator;
+    public int currentTick = -1;
 
     [SerializeField] public LayerMask AnyCollidable;
     [SerializeField] public LayerMask Enemy;
@@ -62,5 +63,17 @@ public class Character : MonoBehaviour
     {
         return !Physics2D.BoxCast(coll.bounds.center + stepLength * dir.normalized, coll.bounds.size, 0f,
             Vector2.right, 0, AnyCollidable);
+    }
+
+    public bool IsAfterTheTick() 
+    {
+        var curTime = Time.time;
+        var tick = (int)(curTime / DeltaTime);
+        if (tick != currentTick && (curTime - tick * DeltaTime) > Eps + dampingTime)
+        {
+            currentTick = tick;
+            return true;
+        }
+        return false;
     }
 }
