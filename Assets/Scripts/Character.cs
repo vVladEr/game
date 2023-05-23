@@ -19,6 +19,7 @@ public class Character : MonoBehaviour
     [SerializeField] public LayerMask AnyCollidable;
     [SerializeField] public LayerMask Enemy;
     [SerializeField] public LayerMask NotEnemies;
+    [SerializeField] public LayerMask Interactive;
     public Collider2D coll;
     public float stepLength = 0.16f;
 

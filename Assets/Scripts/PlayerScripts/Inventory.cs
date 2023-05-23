@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
     public bool TakeItemOnThisTurn = false;
     private Player player;
     private AudioSource collectWeaponAudio;
+    public int KeyCounter = 0;
 
 
     private void Start()
@@ -40,9 +41,13 @@ public class Inventory : MonoBehaviour
                     break;
 
                 case "Heart":
-                    Debug.Log("stay on heart");
                     gameObject.GetComponent<PlayerHp>().AddHeart();
-                    Debug.Log("NeedToDestroy");
+                    Destroy(collision.gameObject);
+                    TakeItemOnThisTurn = true;
+                    break;
+
+                case "Key":
+                    KeyCounter++;
                     Destroy(collision.gameObject);
                     TakeItemOnThisTurn = true;
                     break;

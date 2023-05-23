@@ -67,9 +67,7 @@ namespace Game
         {
             var directionVector = GetDirectionVector();
             if (directionVector == Vector2.zero) 
-            {
                 return;
-            }
 
             Vector2 currentPosition = transform.position;
             newPosition = currentPosition;
@@ -79,11 +77,20 @@ namespace Game
             else if (Math.Abs(directionVector.x + stepLength) < mathEps)
                 GetComponent<SpriteRenderer>().flipX = true;
 
+            if (IsInterectiveFree(directionVector.normalized))
+            {
+                newPosition = currentPosition + directionVector;
+                inventory.TakeItemOnThisTurn = false;
+                isMoving = true;
+                return;
+            }
+
             inventory.EquipedWeapon.Attack(directionVector.normalized);
             if (inventory.EquipedWeapon.AttackSucc) 
             {
                 weaponAudio.Play();
             }
+
 
             if ((inventory.EquipedWeapon.shouldMoveAfterHit || !inventory.EquipedWeapon.AttackSucc) &&
                 IsDirectionFree(directionVector.normalized))
@@ -92,6 +99,21 @@ namespace Game
                 inventory.TakeItemOnThisTurn = false;
                 isMoving = true;
             }
+        }
+
+        private bool IsInterectiveFree(Vector3 dir)
+        {
+            var interaciveObject = Physics2D.BoxCast(coll.bounds.center + stepLength * dir.normalized, coll.bounds.size, 0f,
+                Vector2.right, 0, Interactive).collider;
+            if (!interaciveObject)
+                return false;
+            if (interaciveObject.gameObject.tag == "Door")
+            {
+                var door = interaciveObject.GetComponent<Door>();
+                door.Act(inventory.KeyCounter);
+                return door.IsAllowedToWalkIn;
+            }
+            return false;
         }
     }
 }
