@@ -7,7 +7,7 @@ public class TickAppearenceManager : MonoBehaviour
 {
     [SerializeField] private Player player;
     [SerializeField] private Animator animator;
-    [SerializeField] private AudioSource audio; 
+    [SerializeField] private AudioSource _audio; 
 
     private void Update()
     {
@@ -16,6 +16,6 @@ public class TickAppearenceManager : MonoBehaviour
 
     public void play_sound()
     {
-        audio.Play();
+        _audio.Play();
     }
 }

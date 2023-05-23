@@ -8,6 +8,8 @@ public class EnemyHp : MonoBehaviour
     public int Hp = 2;
     public GameObject Hitmarker;
     public bool GetHit = false;
+    
+    [SerializeField] public float FlashTime = 0.2f;
 
     public void Start()
     {
@@ -25,14 +27,14 @@ public class EnemyHp : MonoBehaviour
     private IEnumerator DestroyEnemy()
     {
         spriteRenderer.color = Color.black;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(FlashTime);
         Destroy(gameObject);
     }
 
     private IEnumerator DamageFlashRed()
     {
         spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(FlashTime);
         spriteRenderer.color = Color.white;
     }
 }

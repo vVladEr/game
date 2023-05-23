@@ -6,11 +6,11 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public Vector2 Position => transform.position;
-    public const float DeltaTime = 1f;
-    public const float Eps = 0.15f;
+    public float DeltaTime => 60 / General.BPM;
+    public float Eps => General.RightTimeWindow;
 
     public Vector2 velocity = Vector2.zero;
-    public float dampingTime = 0.15f;
+    public float dampingTime => General.DampingTime;
     public Vector2 newPosition;
     public bool isMoving = false;
     public Animator animator;
@@ -22,6 +22,7 @@ public class Character : MonoBehaviour
     [SerializeField] public LayerMask Interactive;
     public Collider2D coll;
     public float stepLength = 0.16f;
+    public General General;
 
     public void MoveSmoothly()
     {
@@ -68,7 +69,7 @@ public class Character : MonoBehaviour
 
     public bool IsAfterTheTick() 
     {
-        var curTime = Time.time;
+        var curTime = General.Time;
         var tick = (int)(curTime / DeltaTime);
         if (tick != currentTick && (curTime - tick * DeltaTime) > Eps + dampingTime)
         {

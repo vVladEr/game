@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Vase : BasicMonster
 {
+    public int hp;
+
     public override void InitialiseMonster()
     {
         turnsTimer = TurnsDelay;

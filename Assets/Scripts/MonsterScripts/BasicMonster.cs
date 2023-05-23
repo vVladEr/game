@@ -15,6 +15,7 @@ public abstract class BasicMonster : Character
         InitialiseCharacter();
         InitialiseMonster();
         player = GameObject.Find("Player").GetComponent<Player>();
+        General = GameObject.Find("General").GetComponent<General>();
     }
     private void Update()
     {
@@ -30,7 +31,7 @@ public abstract class BasicMonster : Character
 
     public bool IsAllowedToMoveByTick() 
     {
-        var curTime = Time.time;
+        var curTime = General.Time;
         var tick = (int)(curTime / DeltaTime);
         if (tick != currentTick && (curTime - tick * DeltaTime) > Eps+ player.dampingTime)
         {

@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
     public bool TakeItemOnThisTurn = false;
     private Player player;
     private AudioSource collectWeaponAudio;
-    public int KeyCounter = 0;
+    public Dictionary<string, bool> Keys = new(); 
 
 
     private void Start()
@@ -20,6 +20,9 @@ public class Inventory : MonoBehaviour
         EquipedWeapon.InisialisePlayer();
         player = gameObject.GetComponent<Player>();
         collectWeaponAudio = GameObject.Find("WeaponChange").GetComponent<AudioSource>();
+        Keys["blue"] = false;
+        Keys["red"] = false;
+        Keys["yellow"] = false;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -47,7 +50,8 @@ public class Inventory : MonoBehaviour
                     break;
 
                 case "Key":
-                    KeyCounter++;
+                    Keys[collision.gameObject.GetComponent<Key>().Color] = true;
+                    collectWeaponAudio.Play();
                     Destroy(collision.gameObject);
                     TakeItemOnThisTurn = true;
                     break;

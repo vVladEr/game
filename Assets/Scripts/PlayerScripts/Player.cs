@@ -15,6 +15,7 @@ namespace Game
             InitialiseCharacter();
             inventory = gameObject.GetComponent<Inventory>();
             weaponAudio = GameObject.Find("CurrentWeapon").GetComponent<AudioSource>();
+            General = GameObject.Find("General").GetComponent<General>();
         }
 
         void Update()
@@ -51,7 +52,7 @@ namespace Game
 
         private bool IsAllowedToMove() 
         {
-            var curTime = Time.time;
+            var curTime = General.Time;
             if (curTime % DeltaTime < Eps ||
                 curTime % DeltaTime > (DeltaTime - Eps))
             {
@@ -110,7 +111,7 @@ namespace Game
             if (interaciveObject.gameObject.tag == "Door")
             {
                 var door = interaciveObject.GetComponent<Door>();
-                door.Act(inventory.KeyCounter);
+                door.Act(inventory.Keys);
                 return door.IsAllowedToWalkIn;
             }
             return false;

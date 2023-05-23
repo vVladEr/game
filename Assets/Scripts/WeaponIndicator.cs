@@ -9,7 +9,7 @@ public class WeaponIndicator : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     private Dictionary<string, Sprite> WeaponSprites = new();
     private Dictionary<string, AudioClip> WeaponSounds = new();
-    private AudioSource audio;
+    private AudioSource _audio;
 
 
     private Sprite GetWeaponSprite(string weaponName) => GameObject.Find("Weapons/" + weaponName).GetComponent<SpriteRenderer>().sprite;
@@ -17,7 +17,7 @@ public class WeaponIndicator : MonoBehaviour
 
     private void Start()
     {
-        audio = GameObject.Find("CurrentWeapon").GetComponent<AudioSource>();
+        _audio = GameObject.Find("CurrentWeapon").GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -28,6 +28,6 @@ public class WeaponIndicator : MonoBehaviour
         if (!WeaponSounds.ContainsKey(currentWeapon))
             WeaponSounds[currentWeapon] = GetWeaponSound(currentWeapon);
         spriteRenderer.sprite = WeaponSprites[currentWeapon];
-        audio.clip = WeaponSounds[currentWeapon];
+        _audio.clip = WeaponSounds[currentWeapon];
     }
 }
