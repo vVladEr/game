@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Game;
+using System;
 
 public class PlayerHp : MonoBehaviour
 {
@@ -15,8 +16,9 @@ public class PlayerHp : MonoBehaviour
 
     [SerializeField] private int health;
     private int maxHealth;
-    [SerializeField] private Image[] heartsImages;
+    [SerializeField] private List<Image> heartsImages;
     [SerializeField] private Sprite[] heartsSprites;
+    [SerializeField] private GameObject HealthPanel;
 
     public void Start()
     {
@@ -28,15 +30,15 @@ public class PlayerHp : MonoBehaviour
 
     private void Update()
     {
-        UpdateHealhBar();
+        UpdateHealthBar();
     }
 
-    private void UpdateHealhBar() 
+    private void UpdateHealthBar() 
     {
         if (health > maxHealth)
             health = maxHealth;
         var heartsNumber = health / 2;
-        for (var i = 0; i < heartsImages.Length; i++)
+        for (var i = 0; i < maxHealth / 2; i++)
         {
             if (i < heartsNumber)
                 heartsImages[i].sprite = heartsSprites[2];
@@ -54,6 +56,14 @@ public class PlayerHp : MonoBehaviour
             RestartLevel();
         hurtAudio.Play();
         StartCoroutine(DamageFlashRed());
+    }
+
+    public void AddHeart() 
+    {
+        maxHealth = Math.Min(maxHealth + 2,16);
+        health += 2;
+        heartsImages[(maxHealth-2)/2].sprite = heartsSprites[0];
+        heartsImages[(maxHealth - 2) / 2].color = new Color(255, 255, 255, 1f);
     }
 
     public void GainHealth(int amount) 
@@ -75,12 +85,10 @@ public class PlayerHp : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("ловушка");
         if (!player.isMoving &&
             collision.gameObject.tag == "Trap" &&
              collision.GetComponent<Thorns>().IsActive) 
         {
-            Debug.Log("сработала");
             TakeHit(1000);
         }
 

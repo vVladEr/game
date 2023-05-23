@@ -38,6 +38,14 @@ public class Inventory : MonoBehaviour
                     Destroy(collision.gameObject);
                     TakeItemOnThisTurn = true;
                     break;
+
+                case "Heart":
+                    Debug.Log("stay on heart");
+                    gameObject.GetComponent<PlayerHp>().AddHeart();
+                    Debug.Log("NeedToDestroy");
+                    Destroy(collision.gameObject);
+                    TakeItemOnThisTurn = true;
+                    break;
             }
         }
     }
