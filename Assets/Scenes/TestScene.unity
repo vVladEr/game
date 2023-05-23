@@ -4914,7 +4914,7 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 448
+    m_Bits: 2496
   Enemy:
     serializedVersion: 2
     m_Bits: 128
