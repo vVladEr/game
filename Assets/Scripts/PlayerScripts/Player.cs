@@ -1,11 +1,11 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
-namespace Game 
+namespace Game
 {
     public class Player : Character
     {
         private Vector2 InitialPosition;
+        private bool MadeStep = false;
         public bool RightTime = false;
         public const float mathEps = 0.0001f;
         private AudioSource weaponAudio;
@@ -57,9 +57,17 @@ namespace Game
                 curTime % DeltaTime > (DeltaTime - Eps))
             {
                 RightTime = true;
-                return true;
+                if (!MadeStep)
+                {
+                    return true;
+                }
             }
-            RightTime = false;
+            else
+            {
+                MadeStep = false;
+                RightTime = false;
+            }
+
             return false;
         }
 
@@ -83,6 +91,7 @@ namespace Game
                 newPosition = currentPosition + directionVector;
                 inventory.TakeItemOnThisTurn = false;
                 isMoving = true;
+                MadeStep = true;
                 return;
             }
 
@@ -99,6 +108,7 @@ namespace Game
                 newPosition = currentPosition + directionVector;
                 inventory.TakeItemOnThisTurn = false;
                 isMoving = true;
+                MadeStep = true;
             }
         }
 

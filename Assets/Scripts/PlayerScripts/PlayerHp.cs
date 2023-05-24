@@ -85,12 +85,17 @@ public class PlayerHp : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!player.isMoving &&
-            collision.gameObject.tag == "Trap" &&
-             collision.GetComponent<Thorns>().IsActive) 
+        if (!player.isMoving) 
         {
-            TakeHit(1000);
+            if (collision.gameObject.tag == "Trap" &&
+                collision.GetComponent<Thorns>().IsActive)
+            {
+                TakeHit(1000);
+            }
+            else if(collision.gameObject.tag == "Door")
+                RestartLevel();
         }
+
 
     }
 }
