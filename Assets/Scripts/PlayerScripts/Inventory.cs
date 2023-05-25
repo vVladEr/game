@@ -7,7 +7,7 @@ using Game;
 public class Inventory : MonoBehaviour
 {
     public BasicWeapon EquipedWeapon;
-    public List<GameObject> Weapons;
+    [SerializeField] private List<GameObject> Weapons;
     public bool TakeItemOnThisTurn = false;
     private Player player;
     private AudioSource collectWeaponAudio;

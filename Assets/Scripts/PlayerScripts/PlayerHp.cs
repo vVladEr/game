@@ -10,7 +10,7 @@ public class PlayerHp : MonoBehaviour
 {
 
     private Player player;
-    public SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
     public bool GetHit = false;
     private AudioSource hurtAudio;
 
@@ -25,6 +25,7 @@ public class PlayerHp : MonoBehaviour
         player = gameObject.GetComponent<Player>();
         maxHealth = health; 
         hurtAudio = GameObject.Find("PlayerHurt").GetComponent<AudioSource>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
 

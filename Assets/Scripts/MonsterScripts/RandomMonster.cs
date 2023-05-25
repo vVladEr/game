@@ -19,10 +19,7 @@ public class RandomMonster : BasicMonster
         {
             turnsTimer = TurnsDelay;
             var directionVector = GetRandomDirection();
-            if (directionVector.x == stepLength)
-                GetComponent<SpriteRenderer>().flipX = false;
-            else if (directionVector.x == -stepLength)
-                GetComponent<SpriteRenderer>().flipX = true;
+            FlipSprite(directionVector);
             Weapon.Attack(directionVector.normalized);
             if (!Weapon.AttackSucc)
             {

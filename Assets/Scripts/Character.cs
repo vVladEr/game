@@ -15,6 +15,7 @@ public class Character : MonoBehaviour
     public bool isMoving = false;
     public Animator animator;
     public int currentTick = -1;
+    public const float mathEps = 0.0001f;
 
     [SerializeField] public LayerMask AnyCollidable;
     [SerializeField] public LayerMask Enemy;
@@ -79,5 +80,11 @@ public class Character : MonoBehaviour
         return false;
     }
 
-
+    public void FlipSprite(Vector2 direction) 
+    {
+        if (Math.Abs(direction.x - stepLength) < mathEps)
+            GetComponent<SpriteRenderer>().flipX = false;
+        else if (Math.Abs(direction.x + stepLength) < mathEps)
+            GetComponent<SpriteRenderer>().flipX = true;
+    }
 }

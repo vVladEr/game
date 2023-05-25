@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class EnemyHp : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
     public int Hp = 2;
-    public GameObject Hitmarker;
     public bool GetHit = false;
     
     [SerializeField] public float FlashTime = 0.2f;

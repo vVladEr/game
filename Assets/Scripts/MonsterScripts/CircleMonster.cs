@@ -25,14 +25,11 @@ public class CircleMonster : BasicMonster
         {
             turnsTimer = TurnsDelay;
             var directionVector = route[pointer];
-            if (directionVector.x == stepLength)
-                GetComponent<SpriteRenderer>().flipX = false;
-            else if (directionVector.x == -stepLength)
-                GetComponent<SpriteRenderer>().flipX = true;
+            FlipSprite(directionVector);
             Weapon.Attack(directionVector.normalized);
             if (!Weapon.AttackSucc && IsDirectionFree(directionVector))
             {
-                pointer = (pointer + 1) % (route.Length);
+                pointer = (pointer + 1) % route.Length;
                 newPosition = directionVector + (Vector2)transform.position;
                 isMoving = true;
             }

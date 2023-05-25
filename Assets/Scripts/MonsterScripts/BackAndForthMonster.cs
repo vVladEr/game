@@ -6,7 +6,7 @@ public class BackAndForthMonster : BasicMonster
 {
     private Vector2[] route;
     private int pointer = 0;
-    public bool IsHorizontal;
+    [SerializeField] private bool IsHorizontal;
     public override void InitialiseMonster()
     {
         turnsTimer = TurnsDelay;
@@ -30,14 +30,11 @@ public class BackAndForthMonster : BasicMonster
         {
             turnsTimer = TurnsDelay;
             var directionVector = route[pointer];
-            if (directionVector.x == stepLength || pointer == 0)
-                GetComponent<SpriteRenderer>().flipX = false;
-            else if (directionVector.x == -stepLength || pointer == 1)
-                GetComponent<SpriteRenderer>().flipX = true;
+            FlipSprite(directionVector);
             Weapon.Attack(directionVector.normalized);
             if (!Weapon.AttackSucc && IsDirectionFree(directionVector))
             {
-                pointer = (pointer+1)%(route.Length);
+                pointer = (pointer+1)%route.Length;
                 newPosition = directionVector + (Vector2)transform.position;
                 isMoving = true;
             }

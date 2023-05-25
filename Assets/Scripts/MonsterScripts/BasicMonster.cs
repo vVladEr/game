@@ -5,7 +5,6 @@ using Game;
 
 public abstract class BasicMonster : Character
 {
-    public float mathEps = 0.0001f;
     public int TurnsDelay = 1;
     public int turnsTimer;
     public BasicWeapon Weapon;

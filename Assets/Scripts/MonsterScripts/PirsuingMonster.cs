@@ -22,10 +22,7 @@ public class PirsuingMonster : BasicMonster
             turnsTimer = TurnsDelay;
             var difference = player.Position - (Vector2)transform.position;
             var directionVector = GetDirectionByDifference(difference);
-            if (directionVector.x == stepLength)
-                GetComponent<SpriteRenderer>().flipX = false;
-            else if (directionVector.x == -stepLength)
-                GetComponent<SpriteRenderer>().flipX = true;
+            FlipSprite(directionVector);
             Weapon.Attack(directionVector.normalized);
             if (!Weapon.AttackSucc)
             {

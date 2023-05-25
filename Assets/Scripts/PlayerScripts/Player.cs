@@ -4,10 +4,9 @@ namespace Game
 {
     public class Player : Character
     {
-        private Vector2 InitialPosition;
         private bool MadeStep = false;
         public bool RightTime = false;
-        public const float mathEps = 0.0001f;
+
         private AudioSource weaponAudio;
         private Inventory inventory;
         void Start()
@@ -81,10 +80,7 @@ namespace Game
             Vector2 currentPosition = transform.position;
             newPosition = currentPosition;
 
-            if (Math.Abs(directionVector.x - stepLength) < mathEps)
-                GetComponent<SpriteRenderer>().flipX = false;
-            else if (Math.Abs(directionVector.x + stepLength) < mathEps)
-                GetComponent<SpriteRenderer>().flipX = true;
+            FlipSprite(directionVector);
 
             if (IsInterectiveFree(directionVector.normalized))
             {
