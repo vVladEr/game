@@ -25,11 +25,11 @@ public class Thorns : MonoBehaviour
         if (tick != currentTick && (curTime - tick * deltaTime) > eps + general.DampingTime)
         {
             currentTick = tick;
-            if (tick % 2 == 1)
-                IsActive = true;
+            IsActive = !IsActive;
+            if (IsActive)
+                currentSprite.sprite = sprites[1];
             else
-                IsActive = false;
-            currentSprite.sprite = sprites[tick % 2];
+                currentSprite.sprite = sprites[0];
         }
     }
 }

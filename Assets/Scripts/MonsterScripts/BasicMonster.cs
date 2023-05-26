@@ -9,12 +9,18 @@ public abstract class BasicMonster : Character
     public int turnsTimer;
     public BasicWeapon Weapon;
     public Player player;
+    [SerializeField] private bool isStrong;
+    [SerializeField] private bool isFast;
     void Start()
     {
+        if (isFast)
+            TurnsDelay = 0;
         InitialiseCharacter();
         InitialiseMonster();
         player = GameObject.Find("Player").GetComponent<Player>();
         General = GameObject.Find("General").GetComponent<General>();
+        if (isStrong)
+            Weapon.Damage = 2;
     }
     private void Update()
     {
