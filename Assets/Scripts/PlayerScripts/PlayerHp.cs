@@ -93,7 +93,7 @@ public class PlayerHp : MonoBehaviour
             {
                 TakeHit(1000);
             }
-            else if(collision.gameObject.tag == "Door")
+            else if(collision.gameObject.tag == "ExitDoor")
                 RestartLevel();
         }
 

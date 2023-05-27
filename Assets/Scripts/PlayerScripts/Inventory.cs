@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using Game;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
@@ -13,7 +12,7 @@ public class Inventory : MonoBehaviour
     private Player player;
     private AudioSource collectWeaponAudio;
     public Dictionary<string, bool> Keys = new();
-    private int CoinsCounter = 0;
+    public int CoinsCounter = 0;
     [SerializeField] private Text coinsAmountText;
 
     private void Start()

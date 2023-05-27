@@ -8,20 +8,35 @@ public class Door : MonoBehaviour
     private SpriteRenderer currentSprite;
     [SerializeField] private Sprite openDoor;
     public bool IsAllowedToWalkIn = false;
+    [SerializeField] private int price = 0;
     public void Act(Dictionary<string, bool> keys)
     {
-        if (CheckCondition(keys)) 
+        if (IsAllowedToWalkIn || CheckColourCondition(keys) ||
+            (color == "" && CheckPriceCondition()))
         {
             IsAllowedToWalkIn = true;
             currentSprite.sprite = openDoor;
         }
     }
 
-    public bool CheckCondition(Dictionary<string, bool> keys)
+    private bool CheckColourCondition(Dictionary<string, bool> keys)
     {
         if(IsAllowedToWalkIn)
             return true;
-        return keys[color] == true;
+        if(keys.ContainsKey(color))
+            return keys[color] == true;
+        return false;
+    }
+
+    private bool CheckPriceCondition() 
+    {
+        var inventory = FindFirstObjectByType<Player>().GetComponent<Inventory>();
+        if (inventory.CoinsCounter >= price) 
+        {
+            inventory.CoinsCounter -= price;
+            return true;
+        }
+        return false;
     }
 
     void Start()
