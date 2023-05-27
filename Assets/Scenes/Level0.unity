@@ -2781,10 +2781,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230bae9a68a0ba44f80d88957c547ece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 
+  Color: 
   openDoor: {fileID: 21300000, guid: 322836d985069cf4a8712eca478744a2, type: 3}
   IsAllowedToWalkIn: 0
-  price: 0
+  Price: 0
+  IsColoured: 0
 --- !u!212 &577049371
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2944,10 +2945,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230bae9a68a0ba44f80d88957c547ece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 
+  Color: 
   openDoor: {fileID: 21300000, guid: 322836d985069cf4a8712eca478744a2, type: 3}
   IsAllowedToWalkIn: 0
-  price: 4
+  Price: 0
+  IsColoured: 0
 --- !u!212 &607408079
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7280,7 +7282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -197.68005, y: 72.69998}
+  m_AnchoredPosition: {x: -197.68002, y: 72.69998}
   m_SizeDelta: {x: -431.4, y: -171.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1467847337
@@ -9535,10 +9537,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230bae9a68a0ba44f80d88957c547ece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: blue
+  Color: 
   openDoor: {fileID: 21300000, guid: 322836d985069cf4a8712eca478744a2, type: 3}
   IsAllowedToWalkIn: 0
-  price: 0
+  Price: 0
+  IsColoured: 0
 --- !u!212 &1828955038
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25260,6 +25263,7 @@ MonoBehaviour:
   stepLength: 0.16
   General: {fileID: 0}
   RightTime: 0
+  hintText: {fileID: 0}
 --- !u!95 &1907904753
 Animator:
   serializedVersion: 5
@@ -25437,7 +25441,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907904751}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.241, y: -0.328, z: 0}
+  m_LocalPosition: {x: 1.035, y: -2.967, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:

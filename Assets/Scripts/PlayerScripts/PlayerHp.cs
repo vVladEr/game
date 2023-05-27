@@ -94,7 +94,7 @@ public class PlayerHp : MonoBehaviour
                 TakeHit(1000);
             }
             else if(collision.gameObject.tag == "ExitDoor")
-                RestartLevel();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); ;
         }
 
 

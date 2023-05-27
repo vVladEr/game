@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Character
 {
@@ -8,6 +9,7 @@ public class Player : Character
 
     private AudioSource weaponAudio;
     private Inventory inventory;
+    [SerializeField] Text hintText;
     void Start()
     {
         InitialiseCharacter();
@@ -44,8 +46,12 @@ public class Player : Character
     {
         if (Input.anyKeyDown)
             PlayerAct();
-        else if (IsAfterTheTick())
+        else if (IsAfterTheTick()) 
+        {
+            General.CapturedPositions.Clear();
             inventory.EquipedWeapon.DropAdditinalDamage();
+        }
+
     }
 
     private bool IsAllowedToMove() 
@@ -114,11 +120,19 @@ public class Player : Character
             Vector2.right, 0, Interactive).collider;
         if (!interaciveObject)
             return false;
-        if (interaciveObject.gameObject.tag == "Door")
+        if (interaciveObject.gameObject.tag == "Door" ||
+            interaciveObject.gameObject.tag == "ExitDoor")
         {
             var door = interaciveObject.GetComponent<Door>();
             door.Act(inventory.Keys);
-            return door.IsAllowedToWalkIn;
+            if (door.IsAllowedToWalkIn)
+                return true;
+            if (door.IsColoured)
+                hintText.text = $"You need {door.Color} key to open this door";
+            else if (door.Price == 1)
+                hintText.text = $"You need 1 coin to open this door";
+            else
+                hintText.text = $"You need {door.Price} coin to open this door";
         }
         return false;
     }

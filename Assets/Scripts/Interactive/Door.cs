@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] private string color;
+    [SerializeField] public string Color;
     private SpriteRenderer currentSprite;
     [SerializeField] private Sprite openDoor;
     public bool IsAllowedToWalkIn = false;
-    [SerializeField] private int price = 0;
+    [SerializeField] public int Price = 0;
+    [SerializeField] public bool IsColoured;
     public void Act(Dictionary<string, bool> keys)
     {
         if (IsAllowedToWalkIn || CheckColourCondition(keys) ||
-            (color == "" && CheckPriceCondition()))
+            (!IsColoured && CheckPriceCondition()))
         {
             IsAllowedToWalkIn = true;
             currentSprite.sprite = openDoor;
@@ -23,17 +24,17 @@ public class Door : MonoBehaviour
     {
         if(IsAllowedToWalkIn)
             return true;
-        if(keys.ContainsKey(color))
-            return keys[color] == true;
+        if(keys.ContainsKey(Color))
+            return keys[Color] == true;
         return false;
     }
 
     private bool CheckPriceCondition() 
     {
         var inventory = FindFirstObjectByType<Player>().GetComponent<Inventory>();
-        if (inventory.CoinsCounter >= price) 
+        if (inventory.CoinsCounter >= Price) 
         {
-            inventory.CoinsCounter -= price;
+            inventory.CoinsCounter -= Price;
             return true;
         }
         return false;
@@ -47,12 +48,12 @@ public class Door : MonoBehaviour
 
     void ChangeColor()
     {
-        currentSprite.color = color switch 
+        currentSprite.color = Color switch 
         {
             "red" => new Color(1, 0.39f, 0.28f, 1),
-            "yellow" => Color.yellow,
+            "yellow" => UnityEngine.Color.yellow,
             "blue" => new Color(0, 0.75f, 1, 1),
-            _ => Color.white
+            _ => UnityEngine.Color.white
         };
     }
 }

@@ -31,6 +31,7 @@ public class CircleMonster : BasicMonster
             {
                 pointer = (pointer + 1) % route.Length;
                 newPosition = directionVector + (Vector2)transform.position;
+                General.CapturedPositions.Add(newPosition);
                 isMoving = true;
             }
         }

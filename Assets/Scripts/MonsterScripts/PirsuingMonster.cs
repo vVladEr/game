@@ -24,10 +24,10 @@ public class PirsuingMonster : BasicMonster
             var directionVector = GetDirectionByDifference(difference);
             FlipSprite(directionVector);
             Weapon.Attack(directionVector.normalized);
-            if (!Weapon.AttackSucc)
+            if (!Weapon.AttackSucc && IsDirectionFree(directionVector.normalized))
             {
-                Debug.Log(directionVector);
                 newPosition = directionVector + (Vector2)transform.position;
+                General.CapturedPositions.Add(newPosition);
                 isMoving = true;
             }
         }
@@ -39,24 +39,28 @@ public class PirsuingMonster : BasicMonster
     private Vector2 GetDirectionByDifference(Vector2 difference)
     {
         Debug.Log(difference);
-        if (difference.x > mathEps 
-            && ( Weapon.IsEnemyInDirection(new Vector2(1, 0))
-            ||IsDirectionFree(new Vector2(1, 0))))
+        if (!IsPositionCaptured(Vector2.right * stepLength + (Vector2)transform.position)
+            && difference.x > mathEps 
+            && ( Weapon.IsEnemyInDirection(Vector2.right)
+            ||IsDirectionFree(Vector2.right)))
             return new Vector2(stepLength, 0);
 
-        if (difference.x < -mathEps
-            && (Weapon.IsEnemyInDirection(new Vector2(-1, 0))
-            || IsDirectionFree(new Vector2(-1, 0))))
+        if (!IsPositionCaptured(Vector2.left * stepLength + (Vector2)transform.position)
+            && difference.x < -mathEps
+            && (Weapon.IsEnemyInDirection(Vector2.left)
+            || IsDirectionFree(Vector2.left)))
             return new Vector2(-stepLength, 0);
 
-        if (difference.y > mathEps
-            && (Weapon.IsEnemyInDirection(new Vector2(0, 1))
-            || IsDirectionFree(new Vector2(0, 1))))
+        if (!IsPositionCaptured(Vector2.up * stepLength + (Vector2)transform.position)
+            && difference.y > mathEps
+            && (Weapon.IsEnemyInDirection(Vector2.up)
+            || IsDirectionFree(Vector2.up)))
             return new Vector2(0, stepLength);
 
-        if (difference.y < -mathEps 
-            && (Weapon.IsEnemyInDirection(new Vector2(0, -1))
-            || IsDirectionFree(new Vector2(0, -1))))
+        if (!IsPositionCaptured(Vector2.down * stepLength + (Vector2)transform.position)
+            && difference.y < -mathEps 
+            && (Weapon.IsEnemyInDirection(Vector2.down)
+            || IsDirectionFree(Vector2.down)))
             return new Vector2(0, -stepLength);
 
         return new Vector2(0, 0);

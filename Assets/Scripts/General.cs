@@ -9,6 +9,7 @@ public class General : MonoBehaviour
     [SerializeField] public float RightTimeWindow;
     [SerializeField] public float DampingTime;
     [SerializeField] public float BPM = 120;
+    public HashSet<Vector2> CapturedPositions = new HashSet<Vector2>();
 
     void Start()
     {
