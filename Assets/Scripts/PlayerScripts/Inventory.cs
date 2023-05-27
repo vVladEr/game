@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Game;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -11,8 +12,9 @@ public class Inventory : MonoBehaviour
     public bool TakeItemOnThisTurn = false;
     private Player player;
     private AudioSource collectWeaponAudio;
-    public Dictionary<string, bool> Keys = new(); 
-
+    public Dictionary<string, bool> Keys = new();
+    private int CoinsCounter = 0;
+    [SerializeField] private Text coinsAmountText;
 
     private void Start()
     {
@@ -54,6 +56,11 @@ public class Inventory : MonoBehaviour
                     collectWeaponAudio.Play();
                     Destroy(collision.gameObject);
                     TakeItemOnThisTurn = true;
+                    break;
+
+                case "Coin":
+                    CoinsCounter++;
+                    Destroy(collision.gameObject);
                     break;
             }
         }
@@ -107,5 +114,10 @@ public class Inventory : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void Update()
+    {
+        coinsAmountText.text = $"x{CoinsCounter}";
     }
 }

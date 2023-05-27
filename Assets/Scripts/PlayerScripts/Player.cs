@@ -94,6 +94,7 @@ namespace Game
             inventory.EquipedWeapon.Attack(directionVector.normalized);
             if (inventory.EquipedWeapon.AttackSucc) 
             {
+                MadeStep = true;
                 weaponAudio.Play();
             }
 

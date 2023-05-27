@@ -25,7 +25,7 @@ public abstract class BasicMonster : Character
     private void Update()
     {
         MoveSmoothly();
-        if (CanUpdate())
+        if (gameObject.GetComponent<EnemyHp>().IsAlive && CanUpdate())
             MonsterUpdate();
     }
     public abstract void InitialiseMonster();
