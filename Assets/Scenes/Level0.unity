@@ -1000,7 +1000,7 @@ GameObject:
   m_Component:
   - component: {fileID: 197930481}
   - component: {fileID: 197930482}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Soundtrack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1015,7 +1015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197930480}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.725, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2656,7 +2656,7 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 3008
+    m_Bits: 2496
   Enemy:
     serializedVersion: 2
     m_Bits: 256
@@ -5784,7 +5784,7 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 3008
+    m_Bits: 2496
   Enemy:
     serializedVersion: 2
     m_Bits: 256
@@ -8473,7 +8473,7 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 3008
+    m_Bits: 2496
   Enemy:
     serializedVersion: 2
     m_Bits: 256
@@ -9401,7 +9401,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0027259272, y: 0.015971474}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.2}
@@ -9412,7 +9412,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.07933447, y: 0.08443324}
+  m_Size: {x: 0.12839895, y: 0.11637619}
   m_EdgeRadius: 0
 --- !u!212 &1663267781
 SpriteRenderer:
@@ -26303,7 +26303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907904751}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.04, y: -2.94, z: 0}
+  m_LocalPosition: {x: 1.04, y: -2.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -31101,7 +31101,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.001090318, y: 0.004405897}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.2}
@@ -31112,7 +31112,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.07933447, y: 0.08443324}
+  m_Size: {x: 0.11422482, y: 0.110868864}
   m_EdgeRadius: 0
 --- !u!212 &2144817365
 SpriteRenderer:

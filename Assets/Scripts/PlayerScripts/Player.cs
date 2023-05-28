@@ -47,11 +47,8 @@ public class Player : Character
         if (Input.anyKeyDown)
             PlayerAct();
         else if (IsAfterTheTick()) 
-        {
-            General.CapturedPositions.Clear();
             inventory.EquipedWeapon.DropAdditinalDamage();
-        }
-
+        General.CapturedPositions.Clear();
     }
 
     private bool IsAllowedToMove() 

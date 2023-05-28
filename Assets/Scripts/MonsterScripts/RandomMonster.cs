@@ -21,10 +21,12 @@ public class RandomMonster : BasicMonster
             var directionVector = GetRandomDirection();
             FlipSprite(directionVector);
             Weapon.Attack(directionVector.normalized);
-            if (!Weapon.AttackSucc && IsDirectionFree(directionVector.normalized))
+            if (!Weapon.AttackSucc
+                && !IsPositionCaptured((Vector2)transform.position + directionVector)
+                && IsDirectionFree(directionVector.normalized))
             {
                 newPosition = directionVector + (Vector2)transform.position;
-                General.CapturedPositions.Add(newPosition);
+                General.CapturedPositions.Add(FixPosition(newPosition));
                 isMoving = true;
             }
         }

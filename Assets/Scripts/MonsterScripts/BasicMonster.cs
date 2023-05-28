@@ -65,7 +65,7 @@ public abstract class BasicMonster : Character
 
     public bool IsPositionCaptured(Vector2 pos)
     {
-        return General.CapturedPositions.Contains(pos);
+        return General.CapturedPositions.Contains(FixPosition(pos));
     }
 
 }

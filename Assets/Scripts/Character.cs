@@ -33,21 +33,21 @@ public class Character : MonoBehaviour
         if (Math.Abs((Position - newPosition).magnitude) < 0.00001f) 
         {
             isMoving = false;
-            FixPosition();
+            transform.position = FixPosition(transform.position);
         } 
     }
     
     public void InitialiseCharacter() 
     {
         coll = gameObject.GetComponent<Collider2D>();
-        FixPosition();
+        transform.position =  FixPosition(transform.position);
     }
 
-    public void FixPosition() 
+    public Vector2 FixPosition(Vector3 pos) 
     {
-        var fixedPos = new Vector2(FixCoord(transform.position.x),
-            FixCoord(transform.position.y));
-        transform.position = fixedPos;
+        var fixedPos = new Vector2(FixCoord(pos.x),
+            FixCoord(pos.y));
+        return fixedPos;
     }
 
     private float FixCoord(float coord) 

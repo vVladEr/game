@@ -32,11 +32,13 @@ public class BackAndForthMonster : BasicMonster
             var directionVector = route[pointer];
             FlipSprite(directionVector);
             Weapon.Attack(directionVector.normalized);
-            if (!Weapon.AttackSucc && IsDirectionFree(directionVector))
+            if (!Weapon.AttackSucc &&
+                !IsPositionCaptured((Vector2)transform.position + directionVector)
+                && IsDirectionFree(directionVector))
             {
                 pointer = (pointer+1)%route.Length;
                 newPosition = directionVector + (Vector2)transform.position;
-                General.CapturedPositions.Add(newPosition);
+                General.CapturedPositions.Add(FixPosition(newPosition));
                 isMoving = true;
             }
         }
