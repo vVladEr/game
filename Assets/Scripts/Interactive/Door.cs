@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Door : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Door : MonoBehaviour
     public bool IsAllowedToWalkIn = false;
     [SerializeField] public int Price = 0;
     [SerializeField] public bool IsColoured;
+    [SerializeField] private Text priceText;
     public void Act(Dictionary<string, bool> keys)
     {
         if (IsAllowedToWalkIn || CheckColourCondition(keys) ||
@@ -44,6 +46,14 @@ public class Door : MonoBehaviour
     {
         currentSprite = GetComponent<SpriteRenderer>();
         ChangeColor();
+        if (Color == "")
+            IsColoured = false;
+        else
+            IsColoured = true;
+        if (!IsColoured) 
+        {
+            priceText.text = $"x{Price}";
+        }
     }
 
     void ChangeColor()

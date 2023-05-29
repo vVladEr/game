@@ -13,6 +13,7 @@ public class PlayerHp : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public bool GetHit = false;
     private AudioSource hurtAudio;
+    private Vector3 lastCheckPoint;
 
     [SerializeField] private int health;
     private int maxHealth;
@@ -26,6 +27,7 @@ public class PlayerHp : MonoBehaviour
         maxHealth = health; 
         hurtAudio = GameObject.Find("PlayerHurt").GetComponent<AudioSource>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        lastCheckPoint = transform.position;
     }
 
 
@@ -54,7 +56,7 @@ public class PlayerHp : MonoBehaviour
     {
         health -= damage;
         if (health <= 0)
-            RestartLevel();
+            BackToLastCheckPoint();
         hurtAudio.Play();
         StartCoroutine(DamageFlashRed());
     }
@@ -72,9 +74,10 @@ public class PlayerHp : MonoBehaviour
         health += amount;
     }
 
-    private void RestartLevel()
+    private void BackToLastCheckPoint() 
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        player.transform.position = lastCheckPoint;
+        health = 2;
     }
 
     private IEnumerator DamageFlashRed()
@@ -88,15 +91,22 @@ public class PlayerHp : MonoBehaviour
     {
         if (!player.isMoving) 
         {
-            if (collision.gameObject.tag == "Trap" &&
-                collision.GetComponent<Thorns>().IsActive)
+            switch (collision.gameObject.tag) 
             {
-                TakeHit(1000);
+                case "Trap":
+                    if (collision.GetComponent<Thorns>().IsActive)
+                        TakeHit(1000);
+                    break;
+
+                case "ExitDoor":
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    break;
+
+                case "CheckPoint":
+                    Debug.Log("GetCheckPoint");
+                    lastCheckPoint = collision.gameObject.transform.position;
+                    break;
             }
-            else if(collision.gameObject.tag == "ExitDoor")
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); ;
         }
-
-
     }
 }

@@ -40,7 +40,6 @@ public class PirsuingMonster : BasicMonster
 
     private Vector2 GetDirectionByDifference(Vector2 difference)
     {
-        Debug.Log(difference);
         if (!IsPositionCaptured(Vector2.right * stepLength + (Vector2)transform.position)
             && difference.x > mathEps 
             && ( Weapon.IsEnemyInDirection(Vector2.right)

@@ -15,6 +15,7 @@ TagManager:
   - Door
   - Key
   - ExitDoor
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
@@ -54,4 +55,10 @@ TagManager:
     locked: 0
   - name: Anvil
     uniqueID: 1409522269
+    locked: 0
+  - name: Player
+    uniqueID: 416035445
+    locked: 0
+  - name: Door
+    uniqueID: 3387785807
     locked: 0
