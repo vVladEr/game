@@ -16,6 +16,7 @@ TagManager:
   - Key
   - ExitDoor
   - CheckPoint
+  - HowToPlay
   layers:
   - Default
   - TransparentFX

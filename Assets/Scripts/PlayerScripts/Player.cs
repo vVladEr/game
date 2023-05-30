@@ -9,19 +9,21 @@ public class Player : Character
 
     private AudioSource weaponAudio;
     private Inventory inventory;
-    [SerializeField] Text hintText;
+    [SerializeField] private Text hintText;
+    public bool IsAlive;
     void Start()
     {
         InitialiseCharacter();
         inventory = gameObject.GetComponent<Inventory>();
         weaponAudio = GameObject.Find("CurrentWeapon").GetComponent<AudioSource>();
         General = GameObject.Find("General").GetComponent<General>();
+        IsAlive = true;
     }
 
     void Update()
     {
         MoveSmoothly();
-        if (IsAllowedToMove()) 
+        if (IsAllowedToMove() && IsAlive) 
         {
             PlayerUpdate();
         }
@@ -89,6 +91,7 @@ public class Player : Character
             newPosition = currentPosition + directionVector;
             inventory.TakeItemOnThisTurn = false;
             isMoving = true;
+            hintText.text = "";
             MadeStep = true;
             return;
         }
@@ -106,6 +109,7 @@ public class Player : Character
         {
             newPosition = currentPosition + directionVector;
             inventory.TakeItemOnThisTurn = false;
+            hintText.text = "";
             isMoving = true;
             MadeStep = true;
         }
@@ -129,8 +133,20 @@ public class Player : Character
             else if (door.Price == 1)
                 hintText.text = $"You need 1 coin to open this door";
             else
-                hintText.text = $"You need {door.Price} coin to open this door";
+                hintText.text = $"You need {door.Price} coins to open this door";
         }
         return false;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "HowToPlay")
+            hintText.text = "Use WASD to move and attack";
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "HowToPlay")
+            hintText.text = "";
     }
 }

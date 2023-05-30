@@ -20,6 +20,7 @@ public class PlayerHp : MonoBehaviour
     [SerializeField] private List<Image> heartsImages;
     [SerializeField] private Sprite[] heartsSprites;
     [SerializeField] private GameObject HealthPanel;
+    public bool IsDead;
 
     public void Start()
     {
@@ -27,7 +28,8 @@ public class PlayerHp : MonoBehaviour
         maxHealth = health; 
         hurtAudio = GameObject.Find("PlayerHurt").GetComponent<AudioSource>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        lastCheckPoint = transform.position;
+        lastCheckPoint = Vector3.zero;
+        IsDead = false;
     }
 
 
@@ -56,9 +58,20 @@ public class PlayerHp : MonoBehaviour
     {
         health -= damage;
         if (health <= 0)
-            BackToLastCheckPoint();
+        {
+            player.IsAlive = false;
+            if (lastCheckPoint != Vector3.zero)
+                BackToLastCheckPoint();
+            else
+                RestartLevel();
+        }
         hurtAudio.Play();
         StartCoroutine(DamageFlashRed());
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void AddHeart() 
@@ -78,6 +91,7 @@ public class PlayerHp : MonoBehaviour
     {
         player.transform.position = lastCheckPoint;
         health = 2;
+        player.IsAlive = true;
     }
 
     private IEnumerator DamageFlashRed()

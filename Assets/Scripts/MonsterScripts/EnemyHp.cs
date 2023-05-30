@@ -9,6 +9,7 @@ public class EnemyHp : MonoBehaviour
     public bool GetHit = false;
     public bool IsAlive = true;
     [SerializeField] GameObject coin;
+    private bool isVase = false;
     
     [SerializeField] public float FlashTime = 0.2f;
 
@@ -16,6 +17,7 @@ public class EnemyHp : MonoBehaviour
     {
         coin = GameObject.FindGameObjectsWithTag("Coin")[0];
         spriteRenderer = GetComponent<SpriteRenderer>();
+        isVase = GetComponent<Vase>();
     }
 
     public void TakeHit(int damage)
@@ -24,7 +26,8 @@ public class EnemyHp : MonoBehaviour
         if (Hp <= 0) 
         {
             IsAlive = false;
-            Instantiate(coin, transform.position, transform.rotation);
+            if(!isVase)
+                Instantiate(coin, transform.position, transform.rotation);
             StartCoroutine(DestroyEnemy());
         }
         else StartCoroutine(DamageFlashRed());
