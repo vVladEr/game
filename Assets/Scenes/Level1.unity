@@ -777,10 +777,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1904418a6dff9e044bb8a3d8e22aefa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeOffset: 1.5
+  TimeOffset: 0.1
   RightTimeWindow: 0.15
   DampingTime: 0.05
-  BPM: 110
+  BPM: 136
 --- !u!1 &59312825
 GameObject:
   m_ObjectHideFlags: 0
@@ -20031,7 +20031,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 649348b55c7c85b4ebd2ba57a723097e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: aa0974b0f82c548488f2fe6921c5c65c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
