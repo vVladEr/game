@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 13760321ea829ea4ca7a19accb87cde6
+guid: e0000906fe2a93d44b2a2801acaef897
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,11 +9,11 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - EightBits
+  - 8-bit Limit (BRK)
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 2
-  ascentCalculationMode: 0
+  ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
   shouldRoundAdvanceValue: 1
   userData: 

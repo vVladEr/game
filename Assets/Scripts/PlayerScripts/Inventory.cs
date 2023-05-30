@@ -11,6 +11,9 @@ public class Inventory : MonoBehaviour
     public bool TakeItemOnThisTurn = false;
     private Player player;
     private AudioSource collectWeaponAudio;
+    private AudioSource collectHeartAudio;
+    private AudioSource collectPotionAudio;
+    private AudioSource collectCoinAudio;
     public Dictionary<string, bool> Keys = new();
     public int CoinsCounter = 0;
     [SerializeField] private Text coinsAmountText;
@@ -21,6 +24,10 @@ public class Inventory : MonoBehaviour
         EquipedWeapon.InisialisePlayer();
         player = gameObject.GetComponent<Player>();
         collectWeaponAudio = GameObject.Find("WeaponChange").GetComponent<AudioSource>();
+        collectHeartAudio = GameObject.Find("HeartAddSound").GetComponent<AudioSource>();
+        collectPotionAudio = GameObject.Find("PotionSound").GetComponent<AudioSource>();
+        collectCoinAudio = GameObject.Find("CoinSound").GetComponent<AudioSource>();
+
         Keys["blue"] = false;
         Keys["red"] = false;
         Keys["yellow"] = false;
@@ -40,6 +47,7 @@ public class Inventory : MonoBehaviour
 
                 case "SmallHealthPotion":
                     gameObject.GetComponent<PlayerHp>().GainHealth(2);
+                    collectPotionAudio.Play();
                     Destroy(collision.gameObject);
                     TakeItemOnThisTurn = true;
                     break;
@@ -47,6 +55,7 @@ public class Inventory : MonoBehaviour
                 case "Heart":
                     gameObject.GetComponent<PlayerHp>().AddHeart();
                     Destroy(collision.gameObject);
+                    collectHeartAudio.Play();
                     TakeItemOnThisTurn = true;
                     break;
 
@@ -60,6 +69,7 @@ public class Inventory : MonoBehaviour
                 case "Coin":
                     CoinsCounter++;
                     Destroy(collision.gameObject);
+                    collectCoinAudio.Play();
                     break;
             }
         }
