@@ -23,7 +23,7 @@ public class RandomMonster : BasicMonster
             Weapon.Attack(directionVector.normalized);
             if (!Weapon.AttackSucc
                 && !IsPositionCaptured((Vector2)transform.position + directionVector)
-                && IsDirectionFree(directionVector.normalized))
+                && (IsDirectionFree(directionVector) || IsInterectiveFree(directionVector)))
             {
                 newPosition = directionVector + (Vector2)transform.position;
                 General.CapturedPositions.Add(FixPosition(newPosition));

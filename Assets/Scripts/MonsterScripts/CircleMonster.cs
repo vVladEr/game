@@ -29,7 +29,7 @@ public class CircleMonster : BasicMonster
             Weapon.Attack(directionVector.normalized);
             if (!Weapon.AttackSucc &&
                 !IsPositionCaptured((Vector2)transform.position + directionVector) &&
-                IsDirectionFree(directionVector))
+                (IsDirectionFree(directionVector) || IsInterectiveFree(directionVector)))
             {
                 pointer = (pointer + 1) % route.Length;
                 newPosition = directionVector + (Vector2)transform.position;

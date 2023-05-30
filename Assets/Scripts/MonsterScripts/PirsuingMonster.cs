@@ -26,7 +26,7 @@ public class PirsuingMonster : BasicMonster
             Weapon.Attack(directionVector.normalized);
             if (!Weapon.AttackSucc 
                 && !IsPositionCaptured((Vector2)transform.position + directionVector)
-                && IsDirectionFree(directionVector.normalized))
+                && (IsDirectionFree(directionVector) || IsInterectiveFree(directionVector)))
             {
                 newPosition = directionVector + (Vector2)transform.position;
                 General.CapturedPositions.Add(FixPosition(newPosition));
@@ -43,25 +43,25 @@ public class PirsuingMonster : BasicMonster
         if (!IsPositionCaptured(Vector2.right * stepLength + (Vector2)transform.position)
             && difference.x > mathEps 
             && ( Weapon.IsEnemyInDirection(Vector2.right)
-            ||IsDirectionFree(Vector2.right)))
+            || IsDirectionFree(Vector2.right) || IsInterectiveFree(Vector2.right)))
             return new Vector2(stepLength, 0);
 
         if (!IsPositionCaptured(Vector2.left * stepLength + (Vector2)transform.position)
             && difference.x < -mathEps
             && (Weapon.IsEnemyInDirection(Vector2.left)
-            || IsDirectionFree(Vector2.left)))
+            || IsDirectionFree(Vector2.left) || IsInterectiveFree(Vector2.left)))
             return new Vector2(-stepLength, 0);
 
         if (!IsPositionCaptured(Vector2.up * stepLength + (Vector2)transform.position)
             && difference.y > mathEps
             && (Weapon.IsEnemyInDirection(Vector2.up)
-            || IsDirectionFree(Vector2.up)))
+            || IsDirectionFree(Vector2.up) || IsInterectiveFree(Vector2.up)))
             return new Vector2(0, stepLength);
 
         if (!IsPositionCaptured(Vector2.down * stepLength + (Vector2)transform.position)
             && difference.y < -mathEps 
             && (Weapon.IsEnemyInDirection(Vector2.down)
-            || IsDirectionFree(Vector2.down)))
+            || IsDirectionFree(Vector2.down) || IsInterectiveFree(Vector2.down)))
             return new Vector2(0, -stepLength);
 
         return new Vector2(0, 0);

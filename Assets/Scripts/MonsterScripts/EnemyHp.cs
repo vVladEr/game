@@ -46,4 +46,13 @@ public class EnemyHp : MonoBehaviour
         yield return new WaitForSeconds(FlashTime);
         spriteRenderer.color = Color.white;
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Debug.Log("Check");
+        if (collision.gameObject.tag == "Trap" && collision.GetComponent<Thorns>().IsActive)
+        {
+                TakeHit(1000);
+        }
+    }
 }

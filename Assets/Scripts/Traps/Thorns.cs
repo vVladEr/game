@@ -22,7 +22,7 @@ public class Thorns : MonoBehaviour
     {
         var curTime = general.Time;
         var tick = (int)(curTime / deltaTime);
-        if (tick != currentTick && (curTime - tick * deltaTime) > eps + general.DampingTime)
+        if (tick != currentTick)
         {
             currentTick = tick;
             IsActive = !IsActive;

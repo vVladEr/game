@@ -27,7 +27,12 @@ public class Bow : BasicWeapon
             var barrier = Physics2D.BoxCast(coll.bounds.center + i * stepLength * dir, coll.bounds.size, 0f,
                 Vector2.right, 0, Barriers);
             if (barrier)
-                break;
+            {
+                Door door;
+                var cond = barrier.collider.TryGetComponent(out door);
+                if(!cond || !door.IsAllowedToWalkIn)
+                    break;
+            }
             var enemy = Physics2D.BoxCast(coll.bounds.center + i * stepLength * dir, coll.bounds.size, 0f,
                 Vector2.right, 0, Enemy).collider;
             if (enemy)

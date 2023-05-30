@@ -48,16 +48,19 @@ public abstract class BasicMonster : Character
     public Vector2 GetRandomDirection() 
     {
         var val = Random.value;
-        if (val < 0.25 && IsDirectionFree(new Vector2(1, 0)))
+        if (val < 0.25 && 
+            (IsDirectionFree(new Vector2(1, 0)) || IsInterectiveFree(new Vector2(1, 0))))
             return new Vector2(stepLength, 0);
 
-        if (val < 0.5 && IsDirectionFree(new Vector2(-1, 0)))
+        if (val < 0.5 &&
+            (IsDirectionFree(new Vector2(-1, 0)) || IsInterectiveFree(new Vector2(-1, 0))))
             return new Vector2(-stepLength, 0);
 
-        if (val < 0.75  && IsDirectionFree(new Vector2(0, 1)))
+        if (val < 0.75  &&
+            (IsDirectionFree(new Vector2(0, 1)) || IsInterectiveFree(new Vector2(0, 1))))
             return new Vector2(0, stepLength);
 
-        if (IsDirectionFree(new Vector2(0, -1)))
+        if (IsDirectionFree(new Vector2(0, -1)) || IsInterectiveFree(new Vector2(0, -1)))
             return new Vector2(0, -stepLength);
 
         return new Vector2(0, 0);
@@ -68,4 +71,18 @@ public abstract class BasicMonster : Character
         return General.CapturedPositions.Contains(FixPosition(pos));
     }
 
+    public bool IsInterectiveFree(Vector3 dir) 
+    {
+        var interaciveObject = Physics2D.BoxCast(coll.bounds.center + stepLength * dir.normalized, coll.bounds.size, 0f,
+        Vector2.right, 0, Interactive).collider;
+        if (!interaciveObject)
+            return false;
+        if (interaciveObject.gameObject.tag == "Door" ||
+            interaciveObject.gameObject.tag == "ExitDoor")
+        {
+            var door = interaciveObject.GetComponent<Door>();
+            return door.IsAllowedToWalkIn;
+        }
+        return false;
+    }
 }

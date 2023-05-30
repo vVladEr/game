@@ -9,8 +9,9 @@ public class Player : Character
 
     private AudioSource weaponAudio;
     private Inventory inventory;
-    [SerializeField] private Text hintText;
+    [SerializeField] public Text hintText;
     public bool IsAlive;
+    private bool isDoorLocked;
     void Start()
     {
         InitialiseCharacter();
@@ -86,17 +87,20 @@ public class Player : Character
 
         FlipSprite(directionVector);
 
+        inventory.EquipedWeapon.Attack(directionVector.normalized);
         if (IsInterectiveFree(directionVector.normalized))
         {
-            newPosition = currentPosition + directionVector;
-            inventory.TakeItemOnThisTurn = false;
-            isMoving = true;
-            hintText.text = "";
-            MadeStep = true;
+            if (!isDoorLocked) 
+            {
+                newPosition = currentPosition + directionVector;
+                inventory.TakeItemOnThisTurn = false;
+                isMoving = true;
+                hintText.text = "";
+                MadeStep = true;
+            }
             return;
         }
 
-        inventory.EquipedWeapon.Attack(directionVector.normalized);
         if (inventory.EquipedWeapon.AttackSucc) 
         {
             MadeStep = true;
@@ -125,6 +129,7 @@ public class Player : Character
             interaciveObject.gameObject.tag == "ExitDoor")
         {
             var door = interaciveObject.GetComponent<Door>();
+            isDoorLocked = !door.IsAllowedToWalkIn;
             door.Act(inventory.Keys);
             if (door.IsAllowedToWalkIn)
                 return true;

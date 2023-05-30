@@ -117,7 +117,7 @@ public class PlayerHp : MonoBehaviour
                     break;
 
                 case "CheckPoint":
-                    Debug.Log("GetCheckPoint");
+                    player.hintText.text = "Checkpoint collected";
                     lastCheckPoint = collision.gameObject.transform.position;
                     break;
             }
