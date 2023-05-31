@@ -17,6 +17,7 @@ public class Inventory : MonoBehaviour
     public Dictionary<string, bool> Keys = new();
     public int CoinsCounter = 0;
     [SerializeField] private Text coinsAmountText;
+    private Dictionary<string, Image> keysSprites = new();
 
     private void Start()
     {
@@ -31,6 +32,13 @@ public class Inventory : MonoBehaviour
         Keys["blue"] = false;
         Keys["red"] = false;
         Keys["yellow"] = false;
+
+        foreach (var color in Keys.Keys) 
+        {
+            keysSprites[color] = GameObject.Find("Panel" + char.ToUpper(color[0]) + color[1..] + "Key").GetComponent<Image>();
+            keysSprites[color].color = new Color(0.2f, 0.2f, 0.2f, 1);
+        }
+            
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -60,7 +68,9 @@ public class Inventory : MonoBehaviour
                     break;
 
                 case "Key":
-                    Keys[collision.gameObject.GetComponent<Key>().Color] = true;
+                    var key = collision.gameObject.GetComponent<Key>();
+                    Keys[key.Color] = true;
+                    keysSprites[key.Color].color = Color.white;
                     collectWeaponAudio.Play();
                     Destroy(collision.gameObject);
                     TakeItemOnThisTurn = true;

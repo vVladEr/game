@@ -636,13 +636,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -1246,6 +1246,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65006631}
   m_CullTransparentMesh: 1
+--- !u!1 &66667550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 66667551}
+  - component: {fileID: 66667553}
+  - component: {fileID: 66667552}
+  m_Layer: 5
+  m_Name: PanelBlueKey
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &66667551
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66667550}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1842655107}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &66667552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66667550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 898108357, guid: 537803cf39081684d906cda0cdfc2fd9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &66667553
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66667550}
+  m_CullTransparentMesh: 1
 --- !u!1 &69168502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,13 +1481,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -3330,16 +3406,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -3899,16 +3975,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -4113,16 +4189,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -4853,13 +4929,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -6533,16 +6609,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -7328,16 +7404,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -8370,16 +8446,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -8712,13 +8788,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -8865,16 +8941,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -9446,16 +9522,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -10698,13 +10774,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -10950,13 +11026,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -11710,13 +11786,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -11924,16 +12000,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -12138,13 +12214,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -13062,6 +13138,7 @@ RectTransform:
   - {fileID: 1742622038}
   - {fileID: 1746411623}
   - {fileID: 1177080514}
+  - {fileID: 1842655107}
   m_Father: {fileID: 961774361}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16015,16 +16092,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -16530,13 +16607,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -16638,7 +16715,7 @@ GameObject:
   - component: {fileID: 1050495281}
   - component: {fileID: 1050495282}
   - component: {fileID: 1050495283}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CheckPoint4
   m_TagString: CheckPoint
   m_Icon: {fileID: 0}
@@ -17026,16 +17103,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -17517,16 +17594,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -17961,13 +18038,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -18175,16 +18252,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -19075,13 +19152,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -30433,13 +30510,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -30749,13 +30826,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -31514,13 +31591,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -32518,13 +32595,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -33211,16 +33288,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -33438,6 +33515,82 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1587227557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1587227558}
+  - component: {fileID: 1587227560}
+  - component: {fileID: 1587227559}
+  m_Layer: 5
+  m_Name: PanelYellowKey
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1587227558
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587227557}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1842655107}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1587227559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587227557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -31646439, guid: 537803cf39081684d906cda0cdfc2fd9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1587227560
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587227557}
+  m_CullTransparentMesh: 1
 --- !u!1 &1608053288
 GameObject:
   m_ObjectHideFlags: 0
@@ -33624,16 +33777,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -33793,7 +33946,7 @@ GameObject:
   - component: {fileID: 1626589454}
   - component: {fileID: 1626589455}
   - component: {fileID: 1626589456}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CheckPoint1
   m_TagString: CheckPoint
   m_Icon: {fileID: 0}
@@ -34368,16 +34521,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -34727,16 +34880,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -79170,16 +79323,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -79928,16 +80081,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -80204,13 +80357,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -80807,6 +80960,110 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1842655106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1842655107}
+  - component: {fileID: 1842655110}
+  - component: {fileID: 1842655109}
+  - component: {fileID: 1842655108}
+  m_Layer: 5
+  m_Name: KeyPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1842655107
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842655106}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -643.603}
+  m_LocalScale: {x: 1.0008026, y: 1.0008026, z: 1.0008026}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2100958246}
+  - {fileID: 1587227558}
+  - {fileID: 66667551}
+  m_Father: {fileID: 769626987}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -374.64426, y: 1502.1117}
+  m_SizeDelta: {x: -585.4, y: -413.5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1842655108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842655106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 40, y: 40}
+  m_Spacing: {x: 5, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
+--- !u!114 &1842655109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842655106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1842655110
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842655106}
+  m_CullTransparentMesh: 1
 --- !u!1 &1843908145
 GameObject:
   m_ObjectHideFlags: 0
@@ -80924,13 +81181,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -82093,16 +82350,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -83365,13 +83622,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -83902,7 +84159,7 @@ GameObject:
   - component: {fileID: 2020850452}
   - component: {fileID: 2020850453}
   - component: {fileID: 2020850454}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CheckPoint2
   m_TagString: CheckPoint
   m_Icon: {fileID: 0}
@@ -84058,16 +84315,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -84227,7 +84484,7 @@ GameObject:
   - component: {fileID: 2033502512}
   - component: {fileID: 2033502513}
   - component: {fileID: 2033502514}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CheckPoint3
   m_TagString: CheckPoint
   m_Icon: {fileID: 0}
@@ -84383,16 +84640,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -85180,13 +85437,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
@@ -85556,6 +85813,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100363732}
+  m_CullTransparentMesh: 1
+--- !u!1 &2100958245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2100958246}
+  - component: {fileID: 2100958248}
+  - component: {fileID: 2100958247}
+  m_Layer: 5
+  m_Name: PanelRedKey
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2100958246
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100958245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1842655107}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2100958247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100958245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2094457916, guid: 537803cf39081684d906cda0cdfc2fd9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2100958248
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100958245}
   m_CullTransparentMesh: 1
 --- !u!1 &2106713360
 GameObject:
@@ -86188,16 +86521,16 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   coll: {fileID: 0}
   stepLength: 0.16
   General: {fileID: 0}
@@ -86464,13 +86797,13 @@ MonoBehaviour:
   currentTick: -1
   AnyCollidable:
     serializedVersion: 2
-    m_Bits: 2496
+    m_Bits: 6592
   Enemy:
     serializedVersion: 2
     m_Bits: 256
   NotEnemies:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
   Interactive:
     serializedVersion: 2
     m_Bits: 2048
