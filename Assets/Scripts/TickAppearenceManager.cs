@@ -9,18 +9,22 @@ public class TickAppearenceManager : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private AudioSource _audio; 
     
-    [SerializeField] private float epsForAnvilAnimation = 0.05f;
-    [SerializeField] private float epsForAnvilSound = 0.05f;
+    [SerializeField]
+    [Range(-0.45f, 0.45f)]
+     private float anvilAnimationOffset = 0.05f;
+    [SerializeField]
+    [Range(-0.45f, 0.45f)]
+     private float anvilSoundOffset = 0.05f;
     private float DeltaTime => 60 / General.BPM;
     [SerializeField] private General General;
     public bool isSoundPlayed = false;
     public bool isAnimationPlayed = false;
-    
+    private float eps = 0.05f;
 
     private void Update()
     {    
-        var currentTime = General.Time;
-        if (currentTime % DeltaTime < epsForAnvilSound)
+        var currentTime = General.Time - anvilSoundOffset;
+        if (currentTime % DeltaTime < eps)
             {
                 if (!isSoundPlayed)
                 {
@@ -30,8 +34,8 @@ public class TickAppearenceManager : MonoBehaviour
             }
         else isSoundPlayed = false;
         
-        currentTime = General.Time;
-        if (currentTime % DeltaTime > DeltaTime - epsForAnvilAnimation)
+        currentTime = General.Time - anvilAnimationOffset;
+        if (currentTime % DeltaTime < eps)
             {
                 if (!isAnimationPlayed)
                 {
