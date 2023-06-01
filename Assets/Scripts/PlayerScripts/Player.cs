@@ -10,6 +10,7 @@ public class Player : Character
     private AudioSource weaponAudio;
     private Inventory inventory;
     [SerializeField] public Text hintText;
+    [SerializeField] private Text missText;
     public bool IsAlive;
     private bool isDoorLocked;
     private int movesTillHintDisapear = 4;
@@ -31,10 +32,13 @@ public class Player : Character
     void Update()
     {
         MoveSmoothly();
-        if (IsAllowedToMove() && IsAlive) 
+        if (IsAllowedToMove())
         {
-            PlayerUpdate();
+            if (IsAlive)
+                PlayerUpdate();
         }
+        else if (Input.anyKeyDown)
+            missText.text = "мимо";
 
     }
 
@@ -57,7 +61,9 @@ public class Player : Character
         if (Input.anyKeyDown)
             PlayerAct();
         else if (IsAfterTheTick()) 
+        {
             inventory.EquipedWeapon.DropAdditinalDamage();
+        } 
         General.CapturedPositions.Clear();
     }
 
@@ -85,6 +91,7 @@ public class Player : Character
 
     private void PlayerAct()
     {
+        missText.text = "";
         var directionVector = GetDirectionVector();
         if (directionVector == Vector2.zero) 
             return;
