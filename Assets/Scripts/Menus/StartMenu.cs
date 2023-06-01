@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
+    [SerializeField] private Animator transitionAnimator;
     public void StartTheGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        transitionAnimator.Play("TransitionExit");
     }
 
     public void GameExit() 
