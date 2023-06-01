@@ -114,7 +114,7 @@ public class PlayerHp : MonoBehaviour
                         thornsDeaths++;
                         if (thornsDeaths == 3)
                         {
-                            player.hintText.text = "I should follow the rythm";
+                            player.hintText.text = "Мне следует прислушаться к ритму";
                             player.UpdateLeftMoves();
                             thornsDeaths = 0;
                         }
@@ -128,7 +128,7 @@ public class PlayerHp : MonoBehaviour
                 case "CheckPoint":
                     if (collision.gameObject.transform.position != lastCheckPoint) 
                     {
-                        player.hintText.text = "Checkpoint collected";
+                        player.hintText.text = "Чекпоинт взят";
                         lastCheckPoint = collision.gameObject.transform.position;
                     }
                     break;

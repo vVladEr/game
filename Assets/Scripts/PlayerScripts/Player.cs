@@ -157,11 +157,9 @@ public class Player : Character
             movesLeft = movesTillHintDisapear;
             closedDoorAudio.Play();
             if (door.IsColoured)
-                hintText.text = $"I need {door.Color} key to open this door";
-            else if (door.Price == 1)
-                hintText.text = $"I need 1 coin to open this door";
+                hintText.text = $"Мне нужен ключ подходящего цвета";
             else
-                hintText.text = $"I need {door.Price} coins to open this door";
+                hintText.text = $"Мне не хватает монет";
 
         }
         return false;
@@ -170,7 +168,7 @@ public class Player : Character
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "HowToPlay")
-            hintText.text = "Use WASD or arrows to move and attack \n Don't forget to follow the rythm";
+            hintText.text = "Используйте WASD или стрелочки для движения и атаки \n Не забывайте попадать в ритм";
     }
 
     public void UpdateLeftMoves()
