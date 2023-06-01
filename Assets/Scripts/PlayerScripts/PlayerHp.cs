@@ -14,6 +14,7 @@ public class PlayerHp : MonoBehaviour
     public bool GetHit = false;
     private AudioSource hurtAudio;
     private Vector3 lastCheckPoint;
+    [SerializeField] private Animator transitionAnimator;
 
     [SerializeField] private int health;
     private int maxHealth;
@@ -113,7 +114,7 @@ public class PlayerHp : MonoBehaviour
                     break;
 
                 case "ExitDoor":
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    transitionAnimator.Play("TransitionExit");
                     break;
 
                 case "CheckPoint":
