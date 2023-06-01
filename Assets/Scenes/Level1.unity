@@ -15027,6 +15027,8 @@ GameObject:
   - component: {fileID: 891906721}
   - component: {fileID: 891906720}
   - component: {fileID: 891906723}
+  - component: {fileID: 891906724}
+  - component: {fileID: 891906725}
   m_Layer: 5
   m_Name: Transition
   m_TagString: Untagged
@@ -15124,6 +15126,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e1fb093e1d633c45be8bd95ca4858c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &891906724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891906718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28de450fffaeee74ea315608ed02aa01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &891906725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891906718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28de450fffaeee74ea315608ed02aa01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &899878389
@@ -81669,7 +81695,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 40, y: 40}
+  m_CellSize: {x: 30, y: 30}
   m_Spacing: {x: 5, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
