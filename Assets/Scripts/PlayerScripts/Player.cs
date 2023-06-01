@@ -37,8 +37,12 @@ public class Player : Character
             if (IsAlive)
                 PlayerUpdate();
         }
-        else if (Input.anyKeyDown)
+        else if (Input.anyKeyDown) 
+        {
+            inventory.EquipedWeapon.DropAdditinalDamage();
             missText.text = "мимо";
+        }
+
 
     }
 
@@ -60,10 +64,6 @@ public class Player : Character
     {
         if (Input.anyKeyDown)
             PlayerAct();
-        else if (IsAfterTheTick()) 
-        {
-            inventory.EquipedWeapon.DropAdditinalDamage();
-        } 
         General.CapturedPositions.Clear();
     }
 

@@ -33,7 +33,7 @@ public abstract class BasicWeapon : MonoBehaviour
         }
         if (AttackSucc)
         {
-            AdditionalDamage = Math.Min(2 * Damage, AdditionalDamage + 1);
+            AdditionalDamage = Math.Min(Damage, AdditionalDamage + 1);
         }
 
     }

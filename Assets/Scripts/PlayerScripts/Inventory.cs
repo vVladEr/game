@@ -17,6 +17,7 @@ public class Inventory : MonoBehaviour
     public Dictionary<string, bool> Keys = new();
     public int CoinsCounter = 0;
     [SerializeField] private Text coinsAmountText;
+    [SerializeField] private Text addDmgText;
     private Dictionary<string, Image> keysSprites = new();
 
     private void Start()
@@ -138,5 +139,6 @@ public class Inventory : MonoBehaviour
     private void Update()
     {
         coinsAmountText.text = $"x{CoinsCounter}";
+        addDmgText.text = $"+{EquipedWeapon.AdditionalDamage}";
     }
 }
