@@ -18,6 +18,7 @@ public class StartMenu : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        Cursor.visible = true;
         SceneManager.LoadScene(0);
     }
 }
