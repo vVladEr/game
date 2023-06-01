@@ -110,7 +110,8 @@ public class PlayerHp : MonoBehaviour
             switch (collision.gameObject.tag) 
             {
                 case "Trap":
-                    if (collision.GetComponent<Thorns>().IsActive)
+                    if (collision.GetComponent<Thorns>().IsActive) 
+                    {
                         thornsDeaths++;
                         if (thornsDeaths == 3)
                         {
@@ -119,6 +120,7 @@ public class PlayerHp : MonoBehaviour
                             thornsDeaths = 0;
                         }
                         TakeHit(1000);
+                    }
                     break;
 
                 case "ExitDoor":
