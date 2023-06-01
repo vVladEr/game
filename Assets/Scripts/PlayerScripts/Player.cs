@@ -146,12 +146,6 @@ public class Player : Character
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "HowToPlay")
-            hintText.text = "Use WASD to move and attack";
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "HowToPlay")
-            hintText.text = "";
+            hintText.text = "Use WASD or arrows to move and attack \n Don't forget to follow the rythm";
     }
 }
