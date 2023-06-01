@@ -12,13 +12,20 @@ public class Player : Character
     [SerializeField] public Text hintText;
     public bool IsAlive;
     private bool isDoorLocked;
+    private int movesTillHintDisapear = 4;
+    private int movesLeft = 4;
+    private AudioSource openDoorAudio;
+    private AudioSource closedDoorAudio;
     void Start()
     {
         InitialiseCharacter();
         inventory = gameObject.GetComponent<Inventory>();
         weaponAudio = GameObject.Find("CurrentWeapon").GetComponent<AudioSource>();
+        openDoorAudio = GameObject.Find("OpenDoor").GetComponent<AudioSource>();
+        closedDoorAudio = GameObject.Find("ClosedDoor").GetComponent<AudioSource>();
         General = GameObject.Find("General").GetComponent<General>();
         IsAlive = true;
+        Cursor.visible = false;
     }
 
     void Update()
@@ -88,24 +95,31 @@ public class Player : Character
         FlipSprite(directionVector);
 
         inventory.EquipedWeapon.Attack(directionVector.normalized);
-        if (IsInterectiveFree(directionVector.normalized))
+
+        if (inventory.EquipedWeapon.AttackSucc)
+        {
+            MadeStep = true;
+            weaponAudio.Play();
+        }
+
+        if ((inventory.EquipedWeapon.shouldMoveAfterHit || !inventory.EquipedWeapon.AttackSucc)
+            && IsInterectiveFree(directionVector.normalized))
         {
             if (!isDoorLocked) 
             {
                 newPosition = currentPosition + directionVector;
                 inventory.TakeItemOnThisTurn = false;
                 isMoving = true;
-                hintText.text = "";
+                if (movesLeft == 0)
+                    hintText.text = "";
+                else
+                    movesLeft--;
                 MadeStep = true;
             }
             return;
         }
 
-        if (inventory.EquipedWeapon.AttackSucc) 
-        {
-            MadeStep = true;
-            weaponAudio.Play();
-        }
+
 
 
         if ((inventory.EquipedWeapon.shouldMoveAfterHit || !inventory.EquipedWeapon.AttackSucc) &&
@@ -113,7 +127,10 @@ public class Player : Character
         {
             newPosition = currentPosition + directionVector;
             inventory.TakeItemOnThisTurn = false;
-            hintText.text = "";
+            if (movesLeft == 0) 
+                hintText.text = "";
+            else
+                movesLeft--;
             isMoving = true;
             MadeStep = true;
         }
@@ -131,14 +148,21 @@ public class Player : Character
             var door = interaciveObject.GetComponent<Door>();
             isDoorLocked = !door.IsAllowedToWalkIn;
             door.Act(inventory.Keys);
-            if (door.IsAllowedToWalkIn)
+            if (door.IsAllowedToWalkIn) 
+            {
+                if(isDoorLocked)
+                    openDoorAudio.Play();
                 return true;
+            }
+            movesLeft = movesTillHintDisapear;
+            closedDoorAudio.Play();
             if (door.IsColoured)
-                hintText.text = $"You need {door.Color} key to open this door";
+                hintText.text = $"I need {door.Color} key to open this door";
             else if (door.Price == 1)
-                hintText.text = $"You need 1 coin to open this door";
+                hintText.text = $"I need 1 coin to open this door";
             else
-                hintText.text = $"You need {door.Price} coins to open this door";
+                hintText.text = $"I need {door.Price} coins to open this door";
+
         }
         return false;
     }
@@ -147,5 +171,10 @@ public class Player : Character
     {
         if (collision.tag == "HowToPlay")
             hintText.text = "Use WASD or arrows to move and attack \n Don't forget to follow the rythm";
+    }
+
+    public void UpdateLeftMoves()
+    {
+        movesLeft = movesTillHintDisapear;
     }
 }

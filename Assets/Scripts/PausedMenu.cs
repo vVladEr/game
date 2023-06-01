@@ -18,6 +18,7 @@ public class PausedMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
+            Cursor.visible = true;
             pause.SetActive(true);
             pauseSource.Pause();
             Time.timeScale = 0;
@@ -26,6 +27,7 @@ public class PausedMenu : MonoBehaviour
 
     public void PauseOff() 
     {
+        Cursor.visible = false;
         pause.SetActive(false);
         Time.timeScale = 1;
         pauseSource.Play();

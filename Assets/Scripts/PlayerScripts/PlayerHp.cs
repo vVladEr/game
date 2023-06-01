@@ -22,6 +22,7 @@ public class PlayerHp : MonoBehaviour
     [SerializeField] private Sprite[] heartsSprites;
     [SerializeField] private GameObject HealthPanel;
     public bool IsDead;
+    private int thornsDeaths = 0;
 
     public void Start()
     {
@@ -110,6 +111,13 @@ public class PlayerHp : MonoBehaviour
             {
                 case "Trap":
                     if (collision.GetComponent<Thorns>().IsActive)
+                        thornsDeaths++;
+                        if (thornsDeaths == 3)
+                        {
+                            player.hintText.text = "I should follow the rythm";
+                            player.UpdateLeftMoves();
+                            thornsDeaths = 0;
+                        }
                         TakeHit(1000);
                     break;
 
@@ -118,8 +126,11 @@ public class PlayerHp : MonoBehaviour
                     break;
 
                 case "CheckPoint":
-                    player.hintText.text = "Checkpoint collected";
-                    lastCheckPoint = collision.gameObject.transform.position;
+                    if (collision.gameObject.transform.position != lastCheckPoint) 
+                    {
+                        player.hintText.text = "Checkpoint collected";
+                        lastCheckPoint = collision.gameObject.transform.position;
+                    }
                     break;
             }
         }
