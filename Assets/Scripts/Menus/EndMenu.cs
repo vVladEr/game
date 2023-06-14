@@ -7,6 +7,6 @@ public class EndMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = true;
+        Cursor.visible = false;
     }
 }

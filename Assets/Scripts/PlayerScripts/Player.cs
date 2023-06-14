@@ -32,18 +32,19 @@ public class Player : Character
     void Update()
     {
         MoveSmoothly();
-        if (IsAllowedToMove())
+        if (Time.timeScale != 0) 
         {
-            if (IsAlive)
-                PlayerUpdate();
+            if (IsAllowedToMove())
+            {
+                if (IsAlive)
+                    PlayerUpdate();
+            }
+            else if (Input.anyKeyDown)
+            {
+                inventory.EquipedWeapon.DropAdditinalDamage();
+                missText.text = "мимо";
+            }
         }
-        else if (Input.anyKeyDown) 
-        {
-            inventory.EquipedWeapon.DropAdditinalDamage();
-            missText.text = "мимо";
-        }
-
-
     }
 
     private Vector2 GetDirectionVector()

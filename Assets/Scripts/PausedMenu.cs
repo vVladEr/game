@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PausedMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pause;
     [SerializeField] private AudioSource pauseSource;
+    private Button continueButton;
     // Start is called before the first frame update
     void Start()
     {
+        continueButton = GameObject.Find("ContinueButton").GetComponent<Button>();
         pause.SetActive(false);
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -18,7 +22,7 @@ public class PausedMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
-            Cursor.visible = true;
+            continueButton.Select();
             pause.SetActive(true);
             pauseSource.Pause();
             Time.timeScale = 0;
@@ -27,7 +31,6 @@ public class PausedMenu : MonoBehaviour
 
     public void PauseOff() 
     {
-        Cursor.visible = false;
         pause.SetActive(false);
         Time.timeScale = 1;
         pauseSource.Play();

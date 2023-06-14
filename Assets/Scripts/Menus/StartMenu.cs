@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 public class StartMenu : MonoBehaviour
 {
     [SerializeField] private Animator transitionAnimator;
+
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
     public void StartTheGame()
     {
         transitionAnimator.Play("TransitionExit");
